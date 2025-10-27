@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- select : 제시된 항목 중 하나 선택 태그
+     option : 선택 항목
+     option value : 선택 항목의 값 if 없다면 공백으로 전송
+     selected : 기본값 설정
+     disabled : 비활성화 설정
+
+     -->
+    <form action="">
+      <label for="cp">통신사 선택</label>
+      <select name="company" id="cp">
+        <option value="">통신사 선택</option>
+        <option value="sk">SK</option>
+        <option value="kt">KT</option>
+        <option value="lg">LG</option>
+      </select>
+      <br />
+
+      <!-- 성별을 나타내는 select 태그 -->
+      <label for="gender">성별</label>
+      <select name="gender" id="gender">
+        <option value="">성별 선택</option>
+        <option value="male">남</option>
+        <option value="female">여</option>
+      </select>
+      <br />
+      <input type="submit" value="제출" />
+      <input type="reset" value="취소" />
+    </form>
+  </body>
+</html>

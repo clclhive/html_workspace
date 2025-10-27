@@ -1,0 +1,106 @@
+/* reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+ul, li { list-style: none; }
+a { text-decoration: none; color: #333; }
+img { vertical-align: top; }
+
+/* common */
+body { font-family: 'Noto Sans KR', sans-serif; }
+.inner { max-width: 1280px; margin: 0 auto; }
+
+/* header */
+header .top-nav { background: #f8f8f8; border-bottom: 1px solid #eee; }
+header .top-nav .inner { display: flex; justify-content: flex-end; align-items: center; height: 40px; }
+header .top-nav ul { display: flex; }
+header .top-nav ul li { margin-left: 20px; }
+header .top-nav ul li a { font-size: 13px; color: #666; }
+
+header .main-header { border-bottom: 1px solid #ddd; }
+header .main-header .inner { display: flex; justify-content: space-between; align-items: center; height: 100px; }
+header .main-header h1 img { height: 40px; }
+header .main-header nav { margin: 0 auto; }
+header .main-header nav ul { display: flex; }
+header .main-header nav ul li { margin: 0 40px; }
+header .main-header nav ul li a { font-size: 19px; font-weight: bold; color: #222; }
+header .main-header nav ul li a:hover { color: #e60012; }
+header .main-header .btn-ticket { background: #e60012; color: #fff; padding: 10px 20px; border-radius: 5px; }
+
+/* main */
+/* visual */
+#visual .main-bn a { position: relative; display: block; text-align: center; }
+#visual .main-bn a img { width: 100%; }
+#visual .main-bn a .txt { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+#visual .main-bn a .txt p { font-size: 56px; font-weight: bold; margin-bottom: 20px; }
+#visual .main-bn a .txt span { font-size: 24px; }
+
+/* info */
+#info { padding: 80px 0; }
+#info .exhibit .tit { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+#info .exhibit .tit h2 { font-size: 36px; font-weight: bold; }
+#info .exhibit .tit a { border: 1px solid #ddd; padding: 5px 15px; border-radius: 15px; }
+#info .exhibit .list ul { display: flex; justify-content: space-between; }
+#info .exhibit .list ul li { width: 32%; text-align: left; border: 1px solid #eee; border-radius: 10px; overflow: hidden; }
+#info .exhibit .list ul li a img { width: 100%; height: 250px; object-fit: cover; }
+#info .exhibit .list ul li a strong { display: block; font-size: 24px; font-weight: bold; margin: 20px 20px 10px; }
+#info .exhibit .list ul li a span { display: block; font-size: 18px; margin: 0 20px 20px; color: #666; }
+#info .exhibit .list ul li a p { font-size: 16px; margin: 0 20px 20px; color: #888; line-height: 1.5; }
+#info .exhibit .list ul li a em { display: inline-block; font-style: normal; font-weight: bold; color: #e60012; margin: 0 20px 20px; padding-right: 15px; background: url('https://adventure.lotteworld.com/common/images/icon/arr_red_12.png') no-repeat right center; }
+
+/* program */
+#program { padding: 80px 0; background: #f5f5f5; }
+#program .tit { text-align: center; margin-bottom: 30px; }
+#program .tit h2 { font-size: 36px; font-weight: bold; }
+#program .tabs ul { display: flex; justify-content: center; margin-bottom: 30px; }
+#program .tabs ul li { margin: 0 10px; }
+#program .tabs ul li a { font-size: 18px; font-weight: bold; color: #888; padding: 10px 20px; border-radius: 20px; }
+#program .tabs ul li.active a { background: #333; color: #fff; }
+#program .list ul { display: flex; justify-content: space-between; }
+#program .list ul li { width: 24%; background: #fff; border-radius: 10px; overflow: hidden; }
+#program .list ul li a .img { height: 200px; }
+#program .list ul li a .img img { width: 100%; height: 100%; object-fit: cover; }
+#program .list ul li a .txt { padding: 20px; }
+#program .list ul li a .txt span { font-size: 14px; color: #e60012; }
+#program .list ul li a .txt strong { display: block; font-size: 18px; font-weight: bold; margin: 10px 0; }
+#program .list ul li a .txt p { font-size: 14px; color: #888; }
+#program .btn-more { display: block; width: 200px; margin: 30px auto 0; text-align: center; border: 1px solid #ddd; padding: 10px 0; border-radius: 5px; }
+
+/* escape */
+#escape { padding: 80px 0; }
+#escape .tit { text-align: center; margin-bottom: 30px; }
+#escape .tit h2 { font-size: 36px; font-weight: bold; }
+#escape .tit p { font-size: 18px; color: #666; margin-top: 10px; }
+#escape .list ul { display: flex; justify-content: space-between; }
+#escape .list ul li { width: 32%; text-align: left; border: 1px solid #eee; border-radius: 10px; overflow: hidden; }
+#escape .list ul li a .img { height: 300px; }
+#escape .list ul li a .img img { width: 100%; height: 100%; object-fit: cover; }
+#escape .list ul li a .txt { padding: 20px; }
+#escape .list ul li a .txt strong { display: block; font-size: 22px; font-weight: bold; margin-bottom: 10px; }
+#escape .list ul li a .txt p { font-size: 16px; margin-bottom: 20px; color: #888; line-height: 1.5; }
+#escape .list ul li a .spec { display: flex; margin-bottom: 20px; }
+#escape .list ul li a .spec dl { display: flex; align-items: center; margin-right: 20px; }
+#escape .list ul li a .spec dt { font-size: 14px; color: #666; margin-right: 10px; }
+#escape .list ul li a .spec dd { font-size: 14px; font-weight: bold; }
+#escape .list ul li a .spec dd img { width: 16px; height: 16px; }
+#escape .list ul li a em { font-style: normal; font-weight: bold; color: #fff; background: #333; padding: 10px 20px; border-radius: 5px; }
+#escape .btn-more { display: block; width: 200px; margin: 30px auto 0; text-align: center; border: 1px solid #ddd; padding: 10px 0; border-radius: 5px; }
+
+/* shortcut */
+#shortcut { padding: 80px 0; }
+#shortcut .inner { display: flex; justify-content: space-between; }
+#shortcut a { position: relative; width: 49%; height: 200px; display: flex; align-items: center; justify-content: center; text-align: center; border-radius: 10px; overflow: hidden; color: #fff; }
+#shortcut a.wedding { background: url('https://adventure.lotteworld.com/api/upload/202509/25/202509251997cfd11bb40') no-repeat center/cover; }
+#shortcut a.souvenir { background: url('https://adventure.lotteworld.com/api/upload/202509/25/202509251997cfece7480') no-repeat center/cover; }
+#shortcut a::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); }
+#shortcut a .txt { position: relative; z-index: 1; }
+#shortcut a .txt strong { font-size: 24px; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.7); }
+#shortcut a .txt p { font-size: 16px; margin-top: 10px; text-shadow: 1px 1px 2px rgba(0,0,0,0.7); }
+
+/* footer */
+footer { background: #333; color: #999; padding: 50px 0; font-size: 14px; }
+footer .inner { display: flex; justify-content: space-between; align-items: center; }
+footer .foot-logo img { height: 50px; }
+footer .foot-info .link { display: flex; margin-bottom: 20px; }
+footer .foot-info .link li { margin-right: 20px; }
+footer .foot-info .link li a { color: #999; }
+footer .foot-info .address p { margin-bottom: 5px; }
+footer .family-site a { display: block; border: 1px solid #999; padding: 10px 20px; color: #999; }

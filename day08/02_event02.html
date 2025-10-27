@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        Hello world
+    </h1>
+
+    <script>
+        /* alert : 안내문을 띄워주는 창 : 확인버튼
+         * confirm : 확인(true) / 취소(false) 
+         //prompt : 값을 입력받을 수 있음 =? alert + input
+         */
+
+         //alert('안녕하세요')
+
+         //let con = confirm('삭제하시겠습니까?')
+         //console.log(con)
+
+         let pro = prompt('이름을 입력하세요')
+         console.log(pro)
+         console.log(document.getElementsByTagName('h1')[0].innerText)
+         document.getElementsByTagName('h1')[0].innerText = pro
+
+    </script>
+</body>
+</html>

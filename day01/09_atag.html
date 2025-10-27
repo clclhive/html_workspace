@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- a : 하이퍼링크 태그
+     href : 이동할 주소 http : // 유무에 따라 자동으로 판단
+        tel : 전화번호로 연결. 주로 모바일에서 사용
+        mailto : 이메일로 연결. 주로 모바일에서 사용
+     target : 이동할 주소의 탭 열기 방식
+     _blank : 새로운 탭에 열기
+     _self : 현재 탭에 열기
+     _parent : 부모 탭에 열기
+        결제창처럼 팝업창 뜨고(자식창) 팝업에 대한 값을 반영해 원래창(부모창)에 반영
+     _top : 최상위 탭에 열기
+     download : 파일 다운로드
+        파일을 다운로드 할 경우
+        href 속성에 파일 경로가 있고, 속성이 download로 되어 있어야 함
+     
+     -->
+
+     <a href="http://www.naver.com" target="_self">naver</a>
+     <a href="http://www.naver.com" target="_blank">naver_blank</a>
+     <hr>
+     <a href="01_intro.html"target="_blank">01_intro.html</a>
+     <a href="01_intro.html"download="download.html">01_intro.html</a>
+
+     <hr>
+
+     <a href="tel:01012345678">전화연결</a>
+     <a href="mailto:test@test.com">이메일연결</a>
+</body>
+</html>

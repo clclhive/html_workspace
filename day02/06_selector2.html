@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        input[type=text]{
+            background-color: blue;
+        }
+        input[type=password]{
+            background-color: red;
+        }
+        
+        input[type=submit]{
+            background-color: green;
+        }
+        input[type=reset]{
+            background-color: yellow;
+        }
+        input[type=button]{
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <h3>로그인 폼</h3>
+    <form action="">
+        <div>
+            <label for="userId">userId</label>
+            <input type="text" id="userId" name="userId" placeholder="8자 이상" required>
+        </div>
+        <div>
+            <label for="userPw">userPw</label>
+            <input type="password" id="userPw" name="userPw" placeholder="8자 이상" required>
+        </div>
+        <div>
+            <label for="userPin">userPin</label>
+            <input type="text" id="userPin" name="userPin" placeholder="숫자만" required>
+        </div>
+        <div>
+            <button type = "button">일반버튼</button>
+            <button type = "submit">전송버튼</button>
+            <button type = "reset">취소버튼</button>
+        </div>
+    </form>
+</body>
+</html>

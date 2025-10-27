@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array sort() 예제</title>
+</head>
+<body>
+    <h1>F12를 눌러 콘솔을 확인하세요.</h1>
+
+    <script>
+        // 1. 정렬할 자동차 데이터 생성 (연도와 타입(대소문자)을 섞어서 만듭니다)
+        const cars = [
+            { type: 'Volvo', year: 2016 },
+            { type: 'Saab', year: 2001 },
+            { type: 'bmw', year: 2010 },
+            { type: 'Audi', year: 2022 },
+            { type: 'hyundai', year: 2018 }
+        ];
+
+        console.log("--- 원본 배열 ---");
+        console.table(cars);
+
+        const sortedByYear = [...cars].sort((a, b) => {
+
+            return b.year - a.year;
+        });
+
+        console.log("\n--- 1. 연도(year) 기준 최신순 정렬 결과 ---");
+        console.table(sortedByYear);
+
+
+        // --- 두 번째: type을 기준으로 오름차순으로 정렬 (대소문자 구분 없이) ---
+        const sortedByType = [...cars].sort((a, b) => {
+            // 대소문자를 구분하지 않고 비교하기 위해 모두 소문자(또는 대문자)로 변환합니다.
+            const typeA = a.type.toLowerCase();
+            const typeB = b.type.toLowerCase();
+
+            /* if/else 문을 사용한 비교
+                if (typeA < typeB) {
+                    return -1; // a가 b보다 앞에 와야 함
+                }
+                if (typeA > typeB) {
+                    return 1; // b가 a보다 앞에 와야 함
+                }
+                return 0; // 순서 변경 없음
+            */
+
+            return typeA.localeCompare(typeB);
+        });
+
+        console.log("\n--- 2. 타입(type) 기준 오름차순 정렬 결과 (대소문자 무시) ---");
+        console.table(sortedByType);
+
+        console.log("\n--- 정렬 후 원본 배열 (변경되지 않음) ---");
+        console.log("정렬 시 [...cars] 처럼 배열을 복사해서 사용했기 때문에 원본은 그대로 유지됩니다.");
+        console.table(cars);
+
+        console.log("\n--- 3. 랜덤 숫자 배열 생성 및 정렬 ---");
+
+        const myArr = [];
+
+        for (let i = 0; i < 6; i++) {
+
+            const randomNumber = Math.floor(Math.random() * 100) + 1;
+            myArr.push(randomNumber);
+        }
+        console.log("랜덤 생성된 원본 배열:", myArr);
+
+        myArr.sort((a, b) => a - b);
+        console.log("오름차순 정렬 후 배열:", myArr);
+    </script>
+</body>
+</html>

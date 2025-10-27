@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position 연습</title>
+    <style>
+
+        .top-container {
+            position: relative; /* 자식 요소 위치의 기준점 */
+            height: 200px; /* 높이 지정 */
+            background-color: #FAEBD7; /* 배경색 (AntiqueWhite) */
+        }
+
+        .bottom-container {
+            position: relative; /* 자식 요소 위치의 기준점 */
+            height: 300px; /* 높이 지정 */
+            background-color: #98FB98; /* 배경색 (PaleGreen) */
+        }
+
+        .box {
+            position: absolute; /* top-container를 기준으로 자유롭게 위치 */
+            width: 100px;  /* 너비 */
+            height: 100px; /* 높이 */
+            top: 50px;     /* 위에서부터 50px 떨어짐 */
+        }
+
+        /* 첫 번째 하늘색 박스 */
+        .cyan-box {
+            background-color: cyan;
+            left: 50px; /* 왼쪽에서 50px 떨어짐 */
+        }
+
+        /* 두 번째 빨간색 박스 */
+        .maroon-box {
+            background-color: maroon;
+            /* 가운데 정렬: 왼쪽에서 50% 민 다음, 박스 너비의 절반(-50px)만큼 왼쪽으로 이동 */
+            left: 50%;
+            margin-left: -50px; 
+        }
+
+        /* 세 번째 보라색 박스 */
+        .purple-box {
+            background-color: purple;
+            right: 50px; /* 오른쪽에서 50px 떨어짐 */
+        }
+        
+        /* 하단에 들어갈 흰색 박스 */
+        .white-box {
+            position: absolute; /* bottom-container를 기준으로 위치 */
+            width: 150px;  /* 너비 */
+            height: 150px; /* 높이 */
+            background-color: white;
+            
+            /* 수직/수평 정가운데 정렬하는 가장 대표적인 방법입니다 */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* 박스 크기의 절반만큼 왼쪽, 위로 이동 */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-container">
+        <div class="box cyan-box"></div>
+        <div class="box maroon-box"></div>
+        <div class="box purple-box"></div>
+    </div>
+
+    <div class="bottom-container">
+        <div class="white-box"></div>
+    </div>
+
+</body>
+</html>

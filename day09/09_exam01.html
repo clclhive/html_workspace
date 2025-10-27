@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        가위 바위 보 게임을 10번 하여 승률 출력
+    </h1>
+
+    <button type="button" id="btn">승률출력</button>
+    <h3>
+        10game의 승률은 <span id="result"></span>%입니다
+    </h3>
+
+    <script>
+        const gameButton = document.getElementById('btn');
+        const resultSpan = document.getElementById('result');
+
+        gameButton.addEventListener('click', function() {
+            let wins = 0;
+            let draws = 0;
+            let losses = 0;
+
+            const choices = ['가위', '바위', '보'];
+
+            console.log("--- 가위바위보 10회 게임 시작 ---");
+
+            // 3. 10번의 게임을 반복합니다.
+            for (let i = 1; i <= 10; i++) {
+                // 컴퓨터와 플레이어의 선택을 랜덤으로 생성 (0, 1, 2 중 하나)
+                const com = Math.floor(Math.random() * 3);
+                const player = Math.floor(Math.random() * 3);
+
+                let roundResult = '';
+
+                // 4. 승, 무, 패를 결정합니다.
+                if (com === player) {
+                    // 무승부
+                    draws++;
+                    roundResult = '무승부';
+                } else if ((player === 0 && com === 2) || // 플레이어: 가위, 컴퓨터: 보
+                           (player === 1 && com === 0) || // 플레이어: 바위, 컴퓨터: 가위
+                           (player === 2 && com === 1)) { // 플레이어: 보, 컴퓨터: 바위
+                    // 플레이어 승리
+                    wins++;
+                    roundResult = '승리';
+                } else {
+                    // 플레이어 패배
+                    losses++;
+                    roundResult = '패배';
+                }
+                console.log(`${i}회차: 플레이어(${choices[player]}) vs 컴퓨터(${choices[com]}) => ${roundResult}`);
+            }
+
+            // 5. 승률을 계산
+            // (승리 수 / (전체 게임 수 - 무승부 수)) * 100
+            const totalGamesWithoutDraws = 10 - draws;
+            const winRate = totalGamesWithoutDraws > 0 ? (wins / totalGamesWithoutDraws) * 100 : 0;
+
+            // 6. 결과를 화면과 콘솔에 출력합니다.
+            resultSpan.textContent = winRate.toFixed(2); // 소수점 2자리까지 표시
+            console.log("\n--- 최종 결과 ---");
+            console.log(`승: ${wins}, 패: ${losses}, 무: ${draws}`);
+            console.log(`승률: ${winRate.toFixed(2)}%`);
+        });
+     </script>
+</body>
+</html>

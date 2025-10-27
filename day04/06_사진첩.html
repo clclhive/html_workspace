@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>누리의 사진첩</title>
+
+    <!-- Google Fonts Import -->
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #fdfaf6;
+            margin: 0;
+            padding: 40px;
+            color: #333;
+        }
+
+        .main-title {
+            font-family: 'Nanum Pen Script', cursive;
+            font-size: 4rem;
+            text-align: center;
+            color: #5d4037;
+            margin-bottom: 50px;
+        }
+
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .photo-card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-content h3 {
+            margin-top: 0;
+            color: #a18d87;
+        }
+
+        .card-content p {
+            flex-grow: 1;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .view-button {
+            background-color: #8d6e63;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            align-self: flex-end;
+            transition: background-color 0.3s;
+        }
+
+        .view-button:hover {
+            background-color: #5d4037;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 class="main-title">누리의 사진첩</h1>
+
+    <div class="photo-gallery">
+
+        <div class="photo-card">
+            <img src="../image/미용누리.jpg" alt="누리1">
+            <div class="card-content">
+                <h3>1</h3>
+                <p>1</p>
+                <button class="view-button">크게 보기</button>
+            </div>
+        </div>
+
+        <div class="photo-card">
+            <img src="../image/누리2.jpg" alt="누리2">
+            <div class="card-content">
+                <h3>2</h3>
+                <p>2</p>
+                <button class="view-button">크게 보기</button>
+            </div>
+        </div>
+
+        <div class="photo-card">
+            <img src="../image/누리3.jpg" alt="누리3">
+            <div class="card-content">
+                <h3>3</h3>
+                <p>3</p>
+                <button class="view-button">크게 보기</button>
+            </div>
+        </div>
+
+        <div class="photo-card">
+            <img src="../image/누리4.jpg" alt="누리4">
+            <div class="card-content">
+                <h3>4</h3>
+                <p>4</p>
+                <button class="view-button">크게 보기</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

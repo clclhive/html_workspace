@@ -1,0 +1,57 @@
+table{
+    width: 70%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+table td, table th{
+    border: 1px solid black;
+    padding: 5px;
+}
+
+thead tr{
+    background-color: chartreuse;
+}
+
+.total td{
+    border-top: 3px double black;
+}
+
+.total{
+    background-color: rgb(83, 196, 31);
+}
+
+tbody tr {
+    /* 배경색이 0.2초 동안 부드럽게 변하도록 transition 효과 추가 */
+    transition: background-color 0.2s ease-in-out;
+}
+
+tbody tr:hover {
+    background-color: #b86161; /* 마우스를 올렸을 때 약간 진한 회색 */
+}
+
+.board-table {
+    margin-top: 20px; /* 위 테이블과의 간격 */
+}
+
+.board-table thead tr {
+    background-color: skyblue;
+}
+
+.board-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* 각 열(column)의 너비 지정 */
+.board-table th:nth-child(1), .board-table td:nth-child(1) { /* 번호 */
+    width: 10%;
+}
+.board-table th:nth-child(2), .board-table td:nth-child(2) { /* 제목 */
+    width: 50%;
+}
+.board-table th:nth-child(3), .board-table td:nth-child(3) { /* 작성자 */
+    width: 20%;
+}
+.board-table th:nth-child(4), .board-table td:nth-child(4) { /* 날짜 */
+    width: 20%;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>통통 튀는 애니메이션</title>
+    <style>
+        body {
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* 1. 수직 바운스 애니메이션 */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+                animation-timing-function: ease-out;
+            }
+            40% {
+                transform: translateY(-60px);
+                animation-timing-function: ease-in;
+            }
+            70% {
+                transform: translateY(-30px);
+                animation-timing-function: ease-in;
+            }
+            90% {
+                transform: translateY(-15px);
+                animation-timing-function: ease-in;
+            }
+        }
+
+        /* 2. 수평 이동 애니메이션 */
+        @keyframes move {
+            from { transform: translateX(0); }
+            to { transform: translateX(calc(100vw - 150px)); }
+        }
+
+        .bouncing-dog {
+            width: 150px;
+            position: absolute;
+            bottom: 0;
+            animation: move 5s linear infinite alternate, bounce 1.5s infinite;
+        }
+    </style>
+</head>
+<body>
+    <img class="bouncing-dog" src="../image/미용누리.jpg" alt="통통 누리">
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            margin: 20px; /* body 바깥쪽 여백 */
+            font-family: Georgia, 'Times New Roman', Times, serif; /* 페이지 전체 기본 글꼴 */
+        }
+
+        .container{
+            display: flex; /* 자식 요소(.box)들을 가로로 정렬 */
+        }
+
+        .box{
+            /* 박스 기본 스타일 */
+            width: 80px; /* 너비 */
+            height: 80px; /* 높이 */
+            background-color: red; /* 배경색 */
+            margin: 10px; /* 바깥쪽 여백 */
+
+            /* 박스 안의 글자 스타일 */
+            color: white; /* 글자색 */
+            font-size: 20px; /* 글자 크기 */
+            font-weight: bold; /* 글자 굵기 */
+            
+            /* 글자를 박스 세로 중앙에 정렬 */
+            display: flex; 
+            justify-content: center;
+
+            /* 마우스 올렸을 때 애니메이션 효과를 부드럽게 */
+            transition: transform 0.3s; 
+        }
+
+        .box:hover{ /* 박스에 마우스를 올렸을 때 적용될 스타일 */
+            opacity: 0.7; /* 약간 투명하게 */
+            transform: translateY(-10px); /* 위로 10px 이동 */
+            cursor: grab; /* 마우스 커서를 변경 */
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">T</div>
+        <div class="box">H</div>
+        <div class="box">A</div>
+        <div class="box">N</div>
+        <div class="box">K</div>
+        <div class="box">S</div>
+    </div>
+</body>
+</html>

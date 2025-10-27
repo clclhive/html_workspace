@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selector Test</title>
+    <style>
+
+        
+
+
+
+        .naver-link {
+            color: green;
+        }
+
+        .google-link {
+            color: darkblue;
+        }
+
+        .daum-link {
+            color: skyblue;
+        }
+
+        ol li {
+            font-size: 20px;
+        }
+
+        ol li:nth-child(even) {
+            color: red;
+        }
+
+        ol li:nth-child(3n) {
+            color: green;
+        }
+
+        ol li:nth-child(1),
+        ol li:nth-child(10) {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- :first-child / : last-child : 첫번째요소, 마지막요소
+         :after / :before : 첫번째요소, 마지막요소 -->
+    <div>
+        <a href="https://www.naver.com" target="_blank" class="naver-link">네이버로 이동</a>
+    </div>
+    <div>
+        <a href="https://www.google.com" target="_blank" class="google-link">구글로 이동</a>
+    </div>
+    <div>
+        <a href="https://www.daum.net" target="_blank" class="daum-link">다음으로 이동</a>
+    </div>
+
+    <hr>
+
+    <ol>
+        <li>리스트 1</li>
+        <li>리스트 2</li>
+        <li>리스트 3</li>
+        <li>리스트 4</li>
+        <li>리스트 5</li>
+        <li>리스트 6</li>
+        <li>리스트 7</li>
+        <li>리스트 8</li>
+        <li>리스트 9</li>
+        <li>리스트 10</li>
+    </ol>
+</body>
+</html>

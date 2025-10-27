@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>누리-사진첩</title>
+    
+    <style>
+        /* --- 기본 및 모바일 스타일 --- */
+        body {
+            font-family: 'Malgun Gothic', '맑은 고딕', sans-serif; /* 기본 글꼴 설정 */
+            padding: 15px; /* 내부 여백 */
+            margin: 0; /* 기본 마진 제거 */
+            background-color: #f4f4f4; /* 기본 배경색 */
+            transition: background-color 0.3s ease; /* 배경색 전환 효과 */
+        }
+
+        h1 {
+            text-align: center; /* 텍스트 가운데 정렬 */
+            color: #333; /* 글자색 */
+            padding-bottom: 10px; /* 아래쪽 여백 */
+            margin-top: 0; /* 위쪽 마진 제거 */
+            border-bottom: 3px solid #007bff; /* 파란색 밑줄 */
+        }
+
+        /* 모바일 뷰에서의 개별 사진 아이템 */
+        .photo-item {
+            position: relative; /* 오버레이 위치의 기준점 */
+            background-color: #ffffff; /* 흰색 배경 */
+            border: 1px solid #ddd; /* 회색 테두리 */
+            border-radius: 8px; /* 모서리 둥글게 */
+            margin-bottom: 20px; /* 아이템 간의 아래쪽 간격 */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 그림자 효과 */
+            overflow: hidden; /* 자식 요소가 넘치면 숨김 */
+        }
+
+        .photo-item img {
+            display: block; /* 이미지 아래쪽 불필요한 여백 제거 */
+            width: 100%; /* 너비를 부모 요소에 꽉 채움 */
+            height: auto; /* 높이는 비율에 맞게 자동 조절 */
+            object-fit: cover; /* 이미지가 잘리더라도 영역을 꽉 채움 */
+            min-height: 200px; /* 이미지가 없을 때 최소 높이 유지 */
+            background-color: #eee; /* 이미지가 없을 때 배경색 */
+        }
+
+        .photo-item p {
+            text-align: center; /* 텍스트 가운데 정렬 */
+            font-style: italic; /* 이탤릭체 */
+            font-size: 1em; /* 글자 크기 */
+            color: #555; /* 글자색 */
+            padding: 15px; /* 내부 여백 */
+            margin: 0; /* 기본 마진 제거 */
+        }
+
+        /* 사진 위에 마우스를 올렸을 때 나타나는 효과 */
+        .overlay {
+            position: absolute; /* 부모(.photo-item) 기준으로 위치 지정 */
+            top: 0; /* 위쪽, 왼쪽 끝에 붙임 */
+            left: 0;
+            width: 100%; /* 너비와 높이를 100%로 설정 */
+            height: calc(100% - 51px); /* 모바일에서 p태그 영역 제외 */
+            background-color: rgba(0, 0, 0, 0.5); /* 반투명 검은 배경 */
+            display: flex; /* 내부 텍스트 중앙 정렬을 위해 flex 사용 */
+            justify-content: center; /* 가로 중앙 */
+            align-items: center; /* 세로 중앙 */
+            opacity: 0; /* 평소에는 투명하게 숨김 */
+            transition: opacity 0.3s ease; /* 나타날 때 부드러운 효과 */
+            color: white; /* 글자색 */
+            font-size: 1.2em; /* 글자 크기 */
+            font-weight: bold; /* 글자 굵게 */
+            cursor: pointer; /* 마우스 커서를 손가락 모양으로 변경 */
+        }
+
+        /* .photo-item에 마우스를 올리면 자식인 .overlay가 보이게 함 */
+        .photo-item:hover .overlay {
+            opacity: 1; /* 투명도를 1로 만들어 보이게 함 */
+        }
+        
+        /* --- 데스크톱 레이아웃 (768px 이상) --- */
+        @media (min-width: 768px) {
+            body {
+                padding: 40px; /* 데스크톱에서 더 넓은 여백 */
+                background-color: #e6f7ff; /* 데스크톱에서 다른 배경색 */
+            }
+
+            /* 데스크톱의 메인 레이아웃 컨테이너 */
+            .gallery-container {
+                display: grid; /* 2차원 그리드 레이아웃 사용 */
+                grid-template-columns: 1fr 1fr; /* 2개의 동일한 너비의 열 생성 */
+                grid-template-rows: 1fr 1fr; /* 2개의 동일한 높이의 행 생성 */
+                gap: 15px; /* 그리드 아이템 사이의 간격 */
+                height: 80vh; /* 전체 높이를 화면 높이의 80%로 설정 */
+                max-height: 800px; /* 최대 높이 제한 */
+            }
+
+            /* 그리드 아이템 공통 스타일 */
+            .grid-item {
+                position: relative;
+                overflow: hidden;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            }
+
+            /* 왼쪽의 큰 사진 영역 */
+            .main-photo {
+                grid-row: 1 / 3; /* 그리드의 1번 행부터 3번 행 전까지 차지 (세로 2칸) */
+                background-color: #f0f0f0; /* 이미지가 꽉 차지 않을 때 배경색 */
+            }
+            .main-photo img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain; /* 이미지가 잘리지 않고 비율을 유지하며 컨테이너 안에 표시 */
+            }
+
+            /* 오른쪽 상단의 텍스트 영역 */
+            .text-area {
+                padding: 20px;
+                background-color: #fff;
+            }
+
+            /* 오른쪽 하단의 작은 사진들 이미지 스타일 */
+            .sub-photos img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover; /* 비율을 유지하며 영역을 가득 채움 (잘릴 수 있음) */
+            }
+            /* 오른쪽 하단의 작은 사진들 컨테이너 */
+            .sub-photos {
+                display: flex; /* 내부 사진들을 가로로 정렬하기 위해 flex 사용 */
+                gap: 15px; /* 사진들 사이의 간격 */
+            }
+            .sub-photos .photo-item {
+                margin-bottom: 0; /* 불필요한 아래쪽 마진 제거 */
+                height: 100%; /* 높이를 부모(.sub-photos)에 꽉 채움 */
+            }
+
+            /* 데스크톱 뷰에서의 오버레이 스타일 */
+            .overlay {
+                height: 100%; /* p태그가 없으므로 높이를 100%로 설정 */
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>누리-사진첩</h1>
+
+    <!-- 모바일에서는 기존처럼 보이고, 데스크톱에서는 그리드로 재배치됩니다. -->
+    <div class="gallery-container">
+
+        <!-- 데스크톱: 왼쪽 큰 사진 -->
+        <div class="grid-item main-photo">
+            <img src="../image/미용누리.jpg" alt="미용하고 누리">
+            <div class="overlay">
+                <span>view more</span>
+            </div>
+        </div>
+
+        <!-- 데스크톱: 오른쪽 위 텍스트 영역 -->
+        <div class="grid-item text-area">
+            <h2>About Nuri</h2>
+            <p>여기에 누리에 대한 설명을 적을 수 있습니다.</p>
+        </div>
+
+        <!-- 데스크톱: 오른쪽 아래 작은 사진들 -->
+        <div class="grid-item sub-photos">
+            <div class="photo-item">
+                <img src="../image/누리2.jpg" alt="리본 단 누리">
+            </div>
+            <div class="photo-item">
+                <img src="../image/누리3.jpg" alt="장난감과 누리">
+            </div>
+        </div>
+
+    </div> </body>
+</html>

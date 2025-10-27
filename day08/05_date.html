@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Date 객체</title>
+</head>
+<body>
+    <h1>JavaScript Date 객체 (날짜와 시간)</h1>
+    <p>콘솔(F12)을 열어 결과를 확인하세요.</p>
+
+    <script>
+        // --- 1. Date 객체 생성 ---
+        console.log("--- 1. Date 객체 생성 ---");
+
+        // a) 인수 없이 생성: 현재 날짜와 시간
+        const now = new Date();
+        console.log(`현재 시간 (new Date()): ${now}`);
+
+        // b) 특정 날짜로 생성 (년, 월(0부터 시작), 일, 시, 분, 초)
+        // 월은 0(1월)부터 11(12월)까지입니다. 이 점을 꼭 기억하세요!
+        const christmas = new Date(2024, 11, 25, 19, 0, 0); // 2024년 12월 25일 19시
+        console.log(`크리스마스: ${christmas}`);
+
+        // c) 문자열로 생성
+        const dateFromString = new Date("2025-01-01T12:00:00");
+        console.log(`문자열로 생성: ${dateFromString}`);
+        console.log("\n");
+
+
+        // --- 2. 날짜/시간 정보 가져오기 (Getter) ---
+        console.log("--- 2. 날짜/시간 정보 가져오기 (Getter) ---");
+        console.log(`현재 날짜 객체: ${now}`);
+
+        console.log(`getFullYear(): ${now.getFullYear()}`); // 년도 (4자리)
+        console.log(`getMonth(): ${now.getMonth()}`);       // 월 (0 ~ 11). +1을 해줘야 실제 월.
+        console.log(`getDate(): ${now.getDate()}`);         // 일 (1 ~ 31)
+        console.log(`getDay(): ${now.getDay()}`);           // 요일 (0:일요일 ~ 6:토요일)
+        console.log(`getHours(): ${now.getHours()}`);       // 시 (0 ~ 23)
+        console.log(`getMinutes(): ${now.getMinutes()}`);   // 분 (0 ~ 59)
+        console.log(`getSeconds(): ${now.getSeconds()}`);   // 초 (0 ~ 59)
+        console.log(`getMilliseconds(): ${now.getMilliseconds()}`); // 밀리초 (0 ~ 999)
+        console.log(`getTime(): ${now.getTime()}`);         // 1970년 1월 1일 0시 0분 0초부터 현재까지의 밀리초
+        console.log("\n");
+
+
+        // --- 3. 날짜/시간 정보 설정하기 (Setter) ---
+        console.log("--- 3. 날짜/시간 정보 설정하기 (Setter) ---");
+        const myDate = new Date();
+        console.log(`변경 전: ${myDate}`);
+
+        myDate.setFullYear(2030); // 년도를 2030으로 설정
+        myDate.setMonth(0);       // 월을 1월(0)로 설정
+        myDate.setDate(1);        // 일을 1일로 설정
+        console.log(`변경 후: ${myDate}`);
+        console.log("\n");
+
+
+        // --- 4. 날짜를 보기 좋은 형식으로 변환하기 ---
+        console.log("--- 4. 날짜 형식 변환 ---");
+        console.log(`toString(): ${now.toString()}`); // 기본 문자열 표현
+        console.log(`toDateString(): ${now.toDateString()}`); // 날짜 부분만 (요일, 월, 일, 년)
+        console.log(`toTimeString(): ${now.toTimeString()}`); // 시간 부분만 (시, 분, 초, 시간대)
+        
+        // 사용자의 지역 설정에 맞는 형식으로 변환 (가장 많이 사용됨)
+        console.log(`toLocaleString(): ${now.toLocaleString()}`); // 날짜와 시간
+        console.log(`toLocaleDateString(): ${now.toLocaleDateString()}`); // 날짜
+        console.log(`toLocaleTimeString(): ${now.toLocaleTimeString()}`); // 시간
+
+        // ISO 8601 표준 형식 (데이터 교환 시 유용)
+        console.log(`toISOString(): ${now.toISOString()}`); // YYYY-MM-DDTHH:mm:ss.sssZ
+        console.log("\n");
+
+
+        // --- 5. 응용: 오늘 날짜를 'YYYY-MM-DD' 형식으로 만들기 ---
+        console.log("--- 5. 응용: YYYY-MM-DD 형식 만들기 ---");
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 +1, 2자리로 맞춤
+        const day = String(now.getDate()).padStart(2, '0');      // 2자리로 맞춤
+
+        const formattedDate = `${year}-${month}-${day}`;
+        console.log(`오늘 날짜 (YYYY-MM-DD): ${formattedDate}`);
+        console.log("\n");
+
+
+        // --- 6. 응용: D-day 계산기 ---
+        console.log("--- 6. 응용: D-day 계산기 ---");
+        const targetDate = new Date("2024-12-25");
+        const today = new Date();
+
+        // 날짜만 비교하기 위해 시간 정보를 0으로 초기화
+        targetDate.setHours(0, 0, 0, 0);
+        today.setHours(0, 0, 0, 0);
+
+        const diff = targetDate.getTime() - today.getTime(); // 밀리초 단위의 시간 차이
+        
+        // 밀리초를 일(day) 단위로 변환
+        // 1초 = 1000ms
+        // 1분 = 60초
+        // 1시간 = 60분
+        // 1일 = 24시간
+        const diffDays = Math.ceil(diff / (1000 * 60 * 60 * 24)); 
+
+        console.log(`크리스마스까지 ${diffDays}일 남았습니다.`);
+
+    </script>
+</body>
+</html>

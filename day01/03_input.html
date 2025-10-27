@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body id="top">
+    <!-- input 태그 : 단일태그 -->
+    <!-- 속성 값이 다양해 여러가지 활용 가능 -->
+    <!-- form태그와 같이 사용하는 경우 많음 -->
+    <!-- form 태그가 input 태그의 값을 지정한 위치로 전송역할 -->
+    <!-- input type = "속성명" 속성 -->
+    <!-- input type + "input 모양" name : 변수명 value : 값 -->
+    <!-- placeholder : 미리보기, 흐리게 표시, 인풋창에 안내문구 같은것을 입력 시 사용 문자를 입력하면 사라짐 -->
+    <!-- id : 태그를 구분하게 하는 값 유일하게 구분 중복 불가 -->
+    <input type="text" name="id" id="" placeholder="아이디" />
+    <input type="password" name="pw" id="" placeholder="비밀번호" />
+    <br />
+
+    <!-- 
+         type = "button" : 버튼 모양
+         type = "submit" : 전송버튼 - form 태그안의 값을 서버로 전송
+         type = "reset" : 취소버튼 - form 태그안의 값을 리셋 -->
+    <input type="button" value="일반버튼" />
+    <input type="submit" value="전송버튼" />
+    <input type="reset" value="취소버튼" />
+    <br />
+
+    <hr />
+    <!-- form tag : 태그안의 정보를 서버로 전송
+          action="" : 주소
+          데이터를 전송하는 방식(method) 2가지
+          get : 기본, 주소 뒤 ? 붙여 보내는 방식(쿼리스트링)
+          post : 반드시 입력, 데이터를 숨겨서 보내는 방식(내부 객체의 body에 붙여 전송)
+          action?변수명=값&변수명=값&... -->
+    <form action="" method="get">
+      <input type="text" name="id" id="" placeholder="아이디" /><br />
+      <input type="text" name="password" id="" placeholder="password" /><br />
+      <input type="text" name="age" id="" placeholder="age" /><br />
+      <input type="button" value="button" />
+      <input type="submit" value="submit" />
+      <input type="reset" value="reset" />
+    </form>
+    <hr />
+    <!-- type = "password" : 비밀번호 입력 시 *로 가려줌 )-->
+    <form action="" method="get">
+      <input type="password" name="pw" id="" placeholder="password" /><br />
+      <input type="submit" value="submit" />
+      <input type="reset" value="reset" />
+    </form>
+
+    <hr />
+    <!-- checkbox : 체크박스 : 다중선택 시 사용 -->
+    <input type="checkbox" /> 사과<br />
+    <input type="checkbox" /> 바나나<br />
+    <input type="checkbox" /> 딸기<br />
+
+    <br />
+    <hr />
+    <form action="" method="get">
+      <input type="checkbox" name="fruit" value="사과" /> 사과<br />
+      <input type="checkbox" name="fruit" value="바나나" /> 바나나<br />
+      <input type="checkbox" name="fruit" value="딸기" /> 딸기<br />
+      <input type="submit" value="submit" />
+      <input type="reset" value="reset" />
+    </form>
+    <hr />
+
+    <!-- label : 다른 태그의 제목 역할을 하는 태그 
+     for : 연결할 태그의 id 속성값 해당 id의 제목이 됨됨
+     -->
+    <form action="" method="get">
+      <!-- label 태그로 input과 텍스트를 함께 감싸면, 텍스트를 클릭해도 input이 선택됩니다. -->
+      <label> <input type="checkbox" name="fruit" value="사과" /> 사과 </label
+      ><br />
+      <label>
+        <input type="checkbox" name="fruit" value="바나나" /> 바나나 </label
+      ><br />
+      <label> <input type="checkbox" name="fruit" value="딸기" /> 딸기 </label
+      ><br />
+      <input type="submit" value="submit" />
+      <input type="reset" value="reset" />
+    </form>
+
+    <hr />
+
+    <!-- radio : 라디오 버튼 : 단일선택 시 사용 -->
+    <!-- checked : 기본값 설정 -->
+    <input type="radio" name="fruit2" value="사과" checked /> 사과<br />
+    <input type="radio" name="fruit2" value="바나나" /> 바나나<br />
+    <input type="radio" name="fruit2" value="딸기" /> 딸기<br />
+
+    <hr />
+
+    <!-- form, label, radio 버튼을 이용해서 10대,20대, 30대, 40대이상 중 하나를 선택할 수 있는 값을 생성 전송 -->
+    <form action="" method="get">
+      <label><input type="radio" name="age" value="10대" checked /> 10대</label>
+      <label><input type="radio" name="age" value="20대" /> 20대</label>
+      <label><input type="radio" name="age" value="30대" /> 30대</label>
+      <label><input type="radio" name="age" value="40대이상" /> 40대이상</label
+      ><br />
+      <input type="submit" value="제출" />
+    </form>
+
+    <br><hr>
+
+    <!-- color : 색상 선택 박스 
+     색상정보는 16진수로 표현-->
+     <input type="color">
+
+     <br><hr>
+
+     <!-- date : 년월일
+      month : 년월
+      week : 주
+      time : 시간
+      datetime-local : 년월일시
+      time : 시간
+      datetime : 년월일시
+      datepicker : 날짜 선택 박스 주로 사용 -->
+
+      <input type="date">
+      <input type="month">
+
+     <br><hr>
+
+     <!-- email : 이메일 주소 -->
+      <form action="">
+        <input type="email" name="email" placeholder="test@test.com"><br>
+        <input type="url" name="url" placeholder="http://www.test.com"><br>
+        <input type="submit" value="제출">
+        <input type="reset" value="취소">
+      </form>
+
+      <br><hr>
+
+      <!-- search : 검색 창 -->
+      <form action="">
+        <input type="search" name="search" placeholder="검색어"><br>
+        <input type="submit" value="제출">
+        <input type="reset" value="취소">
+      </form>
+      <br><hr>
+
+      <!-- file : 파일 업로드 -->
+       <!-- multiple : 여러 개의 파일 업로드 -->
+       <input type="file" multiple>
+
+       <br><hr>
+
+       <!-- number : 숫자 입력 -->
+        <input type="number" min="0" max="100" step="10">
+
+        <br><hr>
+
+        <!-- hidden : 숨겨진 값 -->
+         <form action="">
+            <input type="hidden" name="id" value="1234">
+            <input type="text" value="nick">
+            <input type="submit" value="submit">
+         </form>
+
+         <br><hr>
+
+         <!-- image : 이미지 버튼 -->
+         <!-- form 태그 안에 있어야 submit 버튼으로 동작합니다. -->
+         <form action="">
+          <input type="image" src="../image/미용누리.jpg" alt="누리 이미지 버튼" width="200">
+         </form>
+
+         <br><hr>
+
+         <!-- range : 슬라이드 바 -->
+         <label for="r">
+            0<input type="range" name="range" id="r" min="0" max="100" step="1">100
+         </label>
+
+         <br><hr>
+         <!-- 가려고 하는 위치의 id를 설정정 -->
+         <a href="#top">top</a>
+  </body>
+</html>

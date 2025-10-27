@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>F12를 눌러 콘솔을 확인하세요.</h1>
+
+    <script>
+        const musician = {
+            name: 'Mili',
+            formed: 2012, 
+            origin: 'Japan', 
+            playlist: {
+                song1: 'Rightfully',
+                song2: 'String Theocracy',
+                song3: 'world.execute(me);'
+            }
+        };
+ 
+        console.log("--- Musician Info ---");
+        for (const key in musician) {
+            console.log(`${key} : ${musician[key]}`);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>이름: <input type="text" id="name"></p>
+    <p>주소: <input type="text" id="addr"></p>
+    <fieldset>
+        <legend>좋아하는 것</legend>
+        <p>1: <input type="text" id="favor1"></p>
+        <p>2: <input type="text" id="favor2"></p>
+        <p>3: <input type="text" id="favor3"></p>
+    </fieldset>
+    <p>이메일: <input type="email" id="email"></p>
+    <p>하고싶은 말: <textarea id="wanna"></textarea></p>
+
+    <button onclick="displayAsJson()">데이터 확인</button>
+    <button onclick="displayAsTable()">표로 출력</button>
+
+    <hr>
+    <!-- JSON 결과 출력 영역 -->
+    <pre id="result"></pre>
+    <!-- 테이블 결과 출력 영역 -->
+    <div id="table-result"></div>
+    <script>
+        const dataObj = {
+            name:'',
+            addr:'',
+            favors:{
+                favor1:'',
+                favor2:'',
+                favor3:''
+            },
+            email:'',
+            wanna:''
+        }
+
+        // 입력 필드의 값으로 dataObj 객체를 업데이트하는 함수
+        function updateDataObj() {
+            dataObj.name = document.getElementById('name').value;
+            dataObj.addr = document.getElementById('addr').value;
+            dataObj.favors.favor1 = document.getElementById('favor1').value;
+            dataObj.favors.favor2 = document.getElementById('favor2').value;
+            dataObj.favors.favor3 = document.getElementById('favor3').value;
+            dataObj.email = document.getElementById('email').value;
+            dataObj.wanna = document.getElementById('wanna').value;
+        }
+
+        // 데이터를 JSON 형식으로 화면에 출력하는 함수
+        function displayAsJson(){
+            updateDataObj(); // 데이터 객체 업데이트
+            console.log('Updated dataObj:', dataObj);
+
+            // 결과를 화면에 예쁘게 출력
+            const resultEl = document.getElementById('result');
+            resultEl.textContent = JSON.stringify(dataObj, null, 2);
+            document.getElementById('table-result').innerHTML = ''; // 테이블 영역 초기화
+        }
+
+        // 데이터를 테이블 형식으로 화면에 출력하는 함수
+        function displayAsTable() {
+            updateDataObj(); // 데이터 객체 업데이트
+
+            const tableContainer = document.getElementById('table-result');
+            
+            // 테이블 HTML 문자열 생성
+            const tableHTML = `
+                <h3>입력 정보</h3>
+                <table border="1" style="width: 50%; border-collapse: collapse; text-align: center;">
+                    <thead style="background-color: #f2f2f2;">
+                        <tr>
+                            <th>항목</th>
+                            <th>내용</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>이름</td><td>${dataObj.name}</td></tr>
+                        <tr><td>주소</td><td>${dataObj.addr}</td></tr>
+                        <tr>
+                            <td>좋아하는 것</td>
+                            <td style="display: flex; justify-content: center;">
+                                <ul style="list-style-type: '✔ '; margin: 5px 0; padding-left: 20px; text-align: left;">
+                                    ${dataObj.favors.favor1 ? `<li>${dataObj.favors.favor1}</li>` : ''}
+                                    ${dataObj.favors.favor2 ? `<li>${dataObj.favors.favor2}</li>` : ''}
+                                    ${dataObj.favors.favor3 ? `<li>${dataObj.favors.favor3}</li>` : ''}
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr><td>이메일</td><td>${dataObj.email}</td></tr>
+                        <tr><td>하고싶은 말</td><td>${dataObj.wanna}</td></tr>
+                    </tbody>
+                </table>
+            `;
+
+            tableContainer.innerHTML = tableHTML;
+            document.getElementById('result').textContent = ''; // JSON 영역 초기화
+        }
+    </script>
+</body>
+</html>

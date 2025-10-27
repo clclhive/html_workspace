@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 모든 div에 공통적으로 적용될 기본 스타일 */
+        body > div {
+            width: 200px;
+            padding: 20px;
+            margin: 15px;
+            border-radius: 8px; /* 모서리를 둥글게 */
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1); /* 부드러운 그림자 효과 */
+        }
+
+        .color {
+            color: #d9534f; /* 빨간 계열의 글자색 */
+            background-color: #f9f2f2;
+        }
+
+        .bg-color {
+            background-color: #5cb85c; /* 초록 계열의 배경색 */
+            color: white; /* 배경색이 진하므로 글자는 흰색으로 */
+        }
+
+        .b-color {
+            border: 3px solid #f0ad4e; /* 주황 계열의 두꺼운 테두리 */
+            background-color: #fcf8e3;
+        }
+
+        .box {
+            background: linear-gradient(to right, #337ab7, #5bc0de); /* 파란색 계열 그라데이션 */
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!--
+    색상지정방법
+     - 이미 지정된 이름 사용
+     - 생상 코드 이용
+     - 생상 팔레트 이용
+     - 그래디언트 사용(사이트 이용) 
+     -->
+
+    <div class="color"> 글자색 </div>
+    <div class="bg-color">배경색</div>
+    <div class="b-color">테두리색</div>
+    <div class="box">Test Box</div>
+</body>
+</html>

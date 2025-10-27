@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @keyframes move{
+            /* 애니메이션 시작 (0%) */
+            0%{
+                margin-left: 10px;
+            }
+            /* 오른쪽으로 이동 (50%) */
+            50%{
+                margin-left: 500px;
+            }
+            /* 다시 원래 위치로 복귀 (100%) */
+            100%{
+                margin-left: 10px;
+            }
+        }
+
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: aliceblue;
+            margin-left: 10px;
+            animation-name: move; /* 적용할 애니메이션 이름 */
+            animation-duration: 10s; /* 편도 5초, 왕복 10초 */
+            animation-iteration-count: 5; /* 5번 반복 */
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

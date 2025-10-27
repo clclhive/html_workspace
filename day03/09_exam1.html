@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            margin: 0; /* body의 기본 여백 제거 */
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f4f4; /* 배경에 연한 회색을 주어 메뉴가 돋보이게 함 */
+            padding-top: 50px; /* 메뉴를 위에서 좀 띄움 */
+        }
+
+        .menu-container{
+            display: flex; /* 자식 요소(메뉴)들을 가로로 정렬 */
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 컨테이너에 은은한 그림자 효과 추가 */
+        }
+
+        .menu{
+            flex: 1; /* 모든 메뉴가 동일한 비율로 너비를 차지하도록 함 */
+
+            text-align: center;
+            padding: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333; /* 완전한 검은색보다 부드러운 색상으로 변경 */
+
+            background-color: white;
+            border-right: 1px solid #eee; /* 오른쪽 경계선만 연하게 추가 */
+
+            cursor: pointer; /* 클릭 가능하다는 의미의 손가락 모양 커서로 변경 */
+            transition: all 0.3s ease; /* 모든 속성 변경에 부드러운 전환 효과 적용 */
+        }
+
+        .menu:last-child {
+            border-right: none; /* 마지막 메뉴의 오른쪽 경계선은 제거 */
+        }
+
+        .menu:hover{
+            background-color: #0ddf41; /* 호버 시 배경색을 세련된 남색 계열로 변경 */
+            color: white; /* 배경색과 대비되도록 글자색을 흰색으로 변경 */
+            transform: translateY(-3px); /* 살짝 위로 올라가는 효과 */
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <div class="menu">menu1</div>
+        <div class="menu">menu2</div>
+        <div class="menu">menu3</div>
+        <div class="menu">menu4</div>
+    </div>
+</body>
+</html>

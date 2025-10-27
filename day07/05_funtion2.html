@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        함수의 파라미터와 리턴타입의 사용
+    </h1>
+
+    <!-- 
+        파라미터의 개수는 제한이 없으나, 많으면 관리 힘듬
+        return 유무에 따라 값을 리턴 받을 수 있고, 그냥 종료 가능
+        return 종료 시점을 결정
+    -->
+
+    <script>
+        let MY_NAME = '홍길동'
+
+        function callName(name){
+            let yourName = '순이'
+            console.log(name)
+            console.log(yourName)
+            console.log(MY_NAME)
+            
+        }
+
+        let myName2 = '김철수'
+        callName(MY_NAME)
+        //console.log(yourName)
+
+        //return이 있는 함수
+        function sum(num1, num2){
+            return num1 + num2
+        }
+
+        let s = sum(10,20)
+        console.log(s)
+
+        // 표현식 함수 / 화살표함수
+        // react js에서 많이 사용
+
+        const myFunc = function(MY_NAME){
+            return `Hello ${MY_NAME}`
+        }
+        console.log(myFunc(MY_NAME))
+        let result = myFunc(MY_NAME)
+        console.log(result)
+
+        // 화살표 함수(arrow Function)
+        const arrowFunc = (param1,param2) => {
+            return param1 + param2
+        
+        }
+
+        let arrowResult = arrowFunc(100,200)
+        console.log(arrowResult)
+
+        const arrowFunc2 = (p1,p2) => p1 + p2
+        console.log(arrowFunc2(100,200)) // 리턴생략
+
+        const arrowFunc3 = (p1,p2) => {
+            console.log(p1+p2)
+        }
+        arrowFunc3(300,500)
+
+
+
+    </script>
+</body>
+</html>

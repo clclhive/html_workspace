@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--
+    media-query : 반응형 화면을 만들기 위한 태그
+    max-width / min-width 를 사용해 디스플레이의 사이즈에 따라
+    화면 배치(layout) 을 변경하는 태그
+    - 폰 320px / pad 768px
+    
+    max-width : 엘리먼츠가 가질 수 있는 최대 크기의 값
+        - 화면의 크기가 커지더라도 엘리먼츠가 더 커 질 수 없음.
+        - 레이아웃의 크기를 적절한 크기로 유지시키고 싶을 때 사용
+    min-width : 엘리먼츠가 가질 수 있는 최소 크기의 값
+        - 화면의 크기가 작아지더라도 엘리먼츠의 크기는 지정된 크기 이하로 줄어들지 않음
+        - 컨텐츠 손상을 막기 위해해
+     -->
+
+     <style>
+        .mw{
+            border: 1px solid black;
+            max-width: 600px;
+        }
+
+        .nw{
+            border: 1px solid black;
+            min-width: 600px;
+        }
+     </style>
+</head>
+<body>
+    <div class="mw">    max-width : 엘리먼츠가 가질 수 있는 최대 크기의 값
+        - 화면의 크기가 커지더라도 엘리먼츠가 더 커 질 수 없음.
+        - 레이아웃의 크기를 적절한 크기로 유지시키고 싶을 때 사용</div>
+    <div class="nw">    min-width : 엘리먼츠가 가질 수 있는 최소 크기의 값
+        - 화면의 크기가 작아지더라도 엘리먼츠의 크기는 지정된 크기 이하로 줄어들지 않음
+        - 컨텐츠 손상을 막기 위해해</div>
+</body>
+</html>

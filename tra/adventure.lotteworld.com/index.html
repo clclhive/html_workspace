@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>민속박물관</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 헤더의 주요 요소(로고, 내비게이션, 예매버튼)를 가로로 정렬합니다. */
+        .main-header .inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        /* 내비게이션 메뉴 항목들을 가로로 정렬합니다. */
+        .main-header nav ul {
+            display: flex;
+            gap: 40px; /* 메뉴 사이의 간격 */
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <div class="top-nav">
+                <div class="inner">
+                    <ul>
+                        <li><a href="#">롯데월드 어드벤처</a></li>
+                        <li><a href="#">롯데월드 어드벤처 부산</a></li>
+                        <li><a href="#">서울스카이</a></li>
+                        <li><a href="#">롯데월드 아쿠아리움</a></li>
+                        <li><a href="#">롯데워터파크</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="#">로그인</a></li>
+                        <li><a href="#">KOR</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="main-header">
+                <div class="inner">
+                    <h1><a href="#"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTgiIGhlaWdodD0iNzQiIHZpZXdCb3g9IjAgMCA5OCA3NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMzMuOTY5MiA2Mi43MzA4SDQxLjAwNTRWNjIuMDQySDM1LjExNzJDMzQuOTIwNCA2Mi4wNDIgMzQuNzcyOCA2MS44Nzc5IDM0Ljc3MjggNjEuNjk3NVY1OC40MDA4SDQwLjg3NDJWNTcuNzExOUgzMy4yODAzVjYyLjA0MkMzMy4yODAzIDYyLjQxOTIgMzMuNTkxOSA2Mi43MzA4IDMzLjk2OTIgNjIuNzMwOFpNMzIuNDc2NiA2NC41ODQyVjY1LjI3MzFINDEuODI1NVY2NC41ODQySDMyLjQ3NjZaIiBmaWxsPSJ2YXIoLS1sb2dvQ29sb3IsICMwMDVFM0MpIj48L3BhdGg+PHBhdGggZD0iTTI0LjgzMjIgNjAuNDcwNEMyNi40ODg3IDYwLjQ3MDQgMjcuNDg5MiA1OS42MzQgMjcuNDg5MiA1OC42MTcxQzI3LjQ4OTIgNTcuNjAwMiAyNi40ODg3IDU2Ljc2MzcgMjQuODMyMiA1Ni43NjM3QzIzLjE3NTYgNTYuNzYzNyAyMi4xOTE1IDU3LjYwMDIgMjIuMTkxNSA1OC42MTcxQzIyLjE5MTUgNTkuNjM0IDIzLjE3NTYgNjAuNDcwNCAyNC44MzIyIDYwLjQ3MDRaTTI0LjgzMjIgNTcuMzIxM0MyNS41Mzc0IDU3LjMyMTMgMjYuMDYyMyA1Ny45MTE4IDI2LjA2MjMgNTguNjQ5OUMyNi4wNjIzIDU5LjM4NzkgMjUuNTM3NCA1OS45Nzg0IDI0LjgzMjIgNTkuOTc4NEMyNC4xMjY5IDU5Ljk3ODQgMjMuNjAyIDU5LjM4NzkgMjMuNjAyIDU4LjY0OTlDMjMuNjAyIDU3LjkxMTggMjQuMTI2OSA1Ny4zMjEzIDI0LjgzMjIgNTcuMzIxM1pNMjQuMTU5NyA2Mi41NTM1SDI1LjY1MjJWNjEuNDIxN0gyNy40NTY0QzI3Ljk5NzcgNjEuNDIxNyAyOC43MDI5IDYxLjMzOTcgMjkuMDE0NiA2MS4xOTIxVjYyLjM3M0gzMC41MDcxVjU2Ljk3NjlIMjkuMDE0NlY1OS4zODc5SDI3LjYzNjhWNjAuMDYwNEgyOS4wMTQ2VjYwLjUzNjFDMjguNjUzNyA2MC42NjczIDI3Ljk0ODUgNjAuNzMyOSAyNy41MjIgNjAuNzMyOUgyMS43MzIyVjYxLjQwNTNIMjQuMTQzM1Y2Mi41MzcxTDI0LjE1OTcgNjIuNTUzNVpNMjQuNjUxNyA2NS44NjY2QzI0LjQ1NDkgNjUuODY2NiAyNC4zNTY1IDY1Ljc4NDYgMjQuMzU2NSA2NS41ODc4VjY1LjA2MjlIMzAuNTA3MVY2Mi44ODE1SDIyLjg4MDRWNjMuNTcwNEgyOS4wMzFWNjQuMzc0SDIyLjg4MDRWNjUuODY2NkMyMi44ODA0IDY2LjI0MzggMjMuMTkyIDY2LjU1NTUgMjMuNTY5MiA2Ni41NTU1SDMwLjYzODRWNjUuODY2NkgyNC42NTE3WiIgZmlsbD0idmFyKC0tbG9nb0NvbG9yLCAjMDA1RTNDKSI+PC9wYXRoPjxwYXRoIGQ9Ik0xOS44MzA4IDU2Ljk5NDFIMTguNDAzOFY2Ni41NTYzSDE5LjgzMDhWNTYuOTk0MVoiIGZpbGw9InZhcigtLWxvZ29Db2xvciwgIzAwNUUzQykiPjwvcGF0aD48cGF0aCBkPSJNMTIuOTU2MiA2My41Mzg0QzEyLjc1OTQgNjMuNTM4NCAxMi42MTE3IDYz... [truncated]</a></h1>
+                    <nav>
+                        <ul>
+                            <li><a href="#">민속박물관</a></li>
+                            <li><a href="#">부대시설</a></li>
+                            <li><a href="#">전시정보</a></li>
+                            <li><a href="#">프로그램</a></li>
+                            <li><a href="#">소통서비스</a></li>
+                        </ul>
+                    </nav>
+                    <a href="#" class="btn-ticket">예매하기</a>
+                </div>
+            </div>
+        </header>
+        <main>
+            <section id="visual">
+                <div class="main-bn">
+                    <a href="#">
+                        <img src="https://adventure.lotteworld.com/api/upload/202509/16/202509161994fd0141120" alt="">
+                        <div class="txt">
+                            <p>롯데월드 민속박물관</p>
+                            <span>롯데월드 민속박물관은 우리 민족의 역사와<br>전통문화가 살아 숨쉬는 공간입니다.</span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+            <section id="info">
+                <div class="inner">
+                    <div class="exhibit">
+                        <div class="tit">
+                            <h2>상설전시</h2>
+                            <a href="#">더보기</a>
+                        </div>
+                        <div class="list">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <img src="https://adventure.lotteworld.com/museum/assets/main_permanent_exhibition_01-BP3gX8fx.jpg" alt="">
+                                        <strong>선사시대</strong>
+                                        <span>선사시대 사람들의 일상생활 모습을 모형으로 재현</span>
+                                        <p>선사시대실에서는 구석기, 신석기, 청동기 시대의 유물이 전시되고 있으며, 각 시대별 사람들의 일상생활 모습을 모형으로 재현하여 생생하게 감상할 수 있습니다</p>
+                                        <em>바로가기</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="https://adventure.lotteworld.com/museum/assets/main_permanent_exhibition_02-BObc2jSO.jpg" alt="">
+                                        <strong>삼국시대</strong>
+                                        <span>고구려부터 가야까지의 문화를 모형으로 재현</span>
+                                        <p>삼국시대실에서는 고대 삼국(고구려, 백제, 신라)과 가야의 찬란한 문화를 다양한 유물과 모형을 통해 감상하실 수 있습니다.</p>
+                                        <em>바로가기</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="https://adventure.lotteworld.com/museum/assets/main_permanent_exhibition_03-CH4026zM.jpg" alt="">
+                                        <strong>고려시대</strong>
+                                        <span>불교 미술을 찬란하게 꽃피웠던 고려 문화 재현</span>
+                                        <p>고려시대 귀족 중심의 화려한 문화를 꽃피웠던 고려의 다양한 문화를 감상하실 수 있습니다.</p>
+                                        <em>바로가기</em>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="program">
+                <div class="inner">
+                    <div class="tit">
+                        <h2>교육 & 체험</h2>
+                    </div>
+                    <div class="tabs">
+                        <ul>
+                            <li class="active"><a href="#">역사교육</a></li>
+                            <li><a href="#">전통공예체험</a></li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <div class="img"><img src="https://adventure.lotteworld.com/api/upload/202508/06/202508061987e67f3de90" alt=""></div>
+                                    <div class="txt">
+                                        <span>유아</span>
+                                        <strong>열두 동물의 신나는 달리기</strong>
+                                        <p>2025.03.05 ~ 2025.12.31</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="img"><img src="https://adventure.lotteworld.com/api/upload/202508/06/202508061987e6b4d9180" alt=""></div>
+                                    <div class="txt">
+                                        <span>유아</span>
+                                        <strong>구석기인의 하루</strong>
+                                        <p>2025.03.05 ~ 2025.12.31</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="img"><img src="https://adventure.lotteworld.com/api/upload/202509/12/202509121993d45b23d30" alt=""></div>
+                                    <div class="txt">
+                                        <span>초등</span>
+                                        <strong>왁자지껄! 살아있는 박물관</strong>
+                                        <p>2025.06.27 ~ 2025.12.31</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="img"><img src="https://adventure.lotteworld.com/api/upload/202508/06/202508061987e45a30260" alt=""></div>
+                                    <div class="txt">
+                                        <span>초등</span>
+                                        <strong>[테마] 유물 속 십이지신 이야기</strong>
+                                        <p>2025.08.01 ~ 2025.12.31</p>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="#" class="btn-more">전체보기</a>
+                </div>
+            </section>
+            <section id="escape">
+                <div class="inner">
+                    <div class="tit">
+                        <h2>“롯데월드 X 제로월드” 방탈출</h2>
+                        <p>경험해보고 싶었던 “새로운 세상” 만나보세요</p>
+                    </div>
+                    <div class="list">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <div class="img"><img src="https://adventure.lotteworld.com/api/upload/202509/24/20250924199795bafbd10" alt=""></div>
+                                    <div class="txt">
+                                        <strong>파란 波瀾 [롯데월드 X 파노라마]</strong>
+                                        <p>파란 波瀾 [명사] 1. ................................ 2. 순탄하지 아니하고 어수선하게 계속되는 여러 가지 시련</p>
+                                        <div class="spec">
+                                            <dl>
+                                                <dt>난이도</dt>
+                                                <dd><img src="images/star-filled.png" alt=""><img src="images/star-filled.png" alt=""><img src="images/star-filled.png" alt=""><img src="images/star-empty.png" alt=""><img src="images/star-empty.png" alt=""></dd>
+                                            </dl>
+                                            <dl>
+                                                <dt>테마시간</dt>
+                                                <dd>65분</dd>
+                                            </dl>
+                                        </div>
+                                        <em>자세히 보기</em>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="img"><img src="https://adventure.lotteworld.com/api/upload/202509/10/20250910199325c9d8d70" alt=""></div>
+                                    <div class="txt">
+                                        <strong>바람 [롯데월드 X 제로월드]</strong>
+                                        <p>어디서도 들을 수 없는, 최고의 이야기를 들려 드리겠습니다.</p>
+                                        <div class="spec">
+                                            <dl>
+                                                <dt>난이도</dt>
+                                                <dd><img src="images/star-filled.png" alt=""><img src="images/star-filled.png" alt=""><img src="images/star-empty.png" alt=""><img src="images/star-empty.png" alt=""><img src="images/star-empty.png" alt=""></dd>
+                                            </dl>
+                                            <dl>
+                                                <dt>테마시간</dt>
+                                                <dd>75분</dd>
+                                            </dl>
+                                        </div>
+                                        <em>자세히 보기</em>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="img"><img src="https://adventure.lotteworld.com/api/upload/202509/10/2025091019932539dc680" alt=""></div>
+                                    <div class="txt">
+                                        <strong>아랑 餓浪 [롯데월드 X 제로월드]</strong>
+                                        <p>1595년 조선. 역병으로 멸망한 대청고을에 숨겨져 있는 장물들...탐관오리 종찬은 도굴단을 꾸려 망자들의 마을로 향한다.</p>
+                                        <div class="spec">
+                                            <dl>
+                                                <dt>난이도</dt>
+                                                <dd><img src="images/star-filled.png" alt=""><img src="images/star-empty.png" alt=""><img src="images/star-empty.png" alt=""><img src="images/star-empty.png" alt=""><img src="images/star-empty.png" alt=""></dd>
+                                            </dl>
+                                            <dl>
+                                                <dt>테마시간</dt>
+                                                <dd>70분</dd>
+                                            </dl>
+                                        </div>
+                                        <em>자세히 보기</em>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="#" class="btn-more">전체보기</a>
+                </div>
+            </section>
+            <section id="shortcut">
+                <div class="inner">
+                    <a href="#" class="wedding">
+                        <div class="txt">
+                            <strong>전통혼례장 바로가기</strong>
+                            <p>우리 고유의 옛말과 품격을 선도하는 전통혼례장을 경험해보세요!</p>
+                        </div>
+                    </a>
+                    <a href="#" class="souvenir">
+                        <div class="txt">
+                            <strong>민속기념품점 바로가기</strong>
+                            <p>우리 고유의 옛말과 품격을 선도하는 민속기념품점입니다.</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <div class="inner">
+                <div class="foot-logo"><img src="https://adventure.lotteworld.com/museum/assets/footerLogo-BwqZGQTA.svg" alt=""></div>
+                <div class="foot-info">
+                    <ul class="link">
+                        <li><a href="#">롯데월드 어드벤처 소개</a></li>
+                        <li><a href="#">롯데월드 소개</a></li>
+                        <li><a href="#">제휴문의</a></li>
+                        <li><a href="#">이용약관</a></li>
+                        <li><a href="#">개인정보처리방침</a></li>
+                        <li><a href="#">사이트맵</a></li>
+                    </ul>
+                    <div class="address">
+                        <p>서울특별시 송파구 올림픽로 240 호텔롯데 롯데월드 | 대표자 : 권오상</p>
+                        <p>사업자등록번호 : 219-85-00014 | 통신판매업신고번호 : 송파 제5513호 | 전화 : 1661-2000</p>
+                        <p class="copy">COPYRIGHT 2025 LOTTEWORLD. ALL RIGHTS RESERVED.</p>
+                    </div>
+                </div>
+                <div class="family-site">
+                    
+                    <a href="#">Family Site</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

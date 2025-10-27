@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        이벤트(Event) : 웹 페이지에서 발생하는 모든 상호작용
+    </h1>
+
+    <!-- 
+        [이벤트(Event)란?]
+        - 웹 브라우저에서 사용자가 하는 모든 행위(클릭, 키보드 입력, 마우스 이동 등)나
+          브라우저에서 일어나는 사건(페이지 로딩 완료, 스크롤 등)을 의미합니다.
+        - JavaScript를 사용하면 이런 이벤트가 발생했을 때 특정 동작을 하도록 만들 수 있습니다.
+
+        [이벤트 핸들러(Event Handler) / 리스너(Listener)]
+        - 이벤트가 발생했을 때 실행되는 함수를 '이벤트 핸들러' 또는 '이벤트 리스너'라고 부릅니다.
+
+        [이벤트 처리 방법]
+        1. 인라인 방식 (HTML 속성): <button onclick="alert('클릭!')">버튼</button>
+           - 간단하지만 HTML과 JavaScript가 섞여서 유지보수가 어렵습니다. (권장하지 않음)
+
+        2. 프로퍼티 방식 (DOM 객체 속성): const btn = document.getElementById('myBtn'); btn.onclick = function() { ... };
+           - 인라인 방식보다는 낫지만, 하나의 이벤트에 하나의 핸들러만 등록할 수 있습니다.
+
+        3. addEventListener() 메서드 방식: btn.addEventListener('click', function() { ... });
+           - **가장 권장되는 현대적인 방식입니다.**
+           - 하나의 이벤트에 여러 개의 핸들러를 추가할 수 있습니다.
+           - 코드를 더 깔끔하게 분리하고 관리할 수 있습니다.
+
+        [주요 이벤트 종류]
+        - 마우스 이벤트: click, dblclick(더블클릭), mouseover(요소 위로), mouseout(요소 밖으로)
+        - 키보드 이벤트: keydown(키 누를 때), keyup(키 뗄 때), keypress(문자 키 누를 때)
+        - 폼 이벤트: submit(폼 제출), change(input 값 변경), focus(요소에 포커스), blur(포커스 잃음)
+        - 로드 이벤트: load(페이지/이미지 로딩 완료)
+
+        [DOM (Document Object Model) 이란?]
+        - 브라우저가 HTML 문서를 JavaScript가 조작할 수 있는 객체(Object) 모델로 변환한 것입니다.
+        - HTML의 모든 태그, 속성, 텍스트는 DOM에서 '요소(Element)' 또는 '노드(Node)'가 됩니다.
+        - `document` 객체는 DOM 트리의 최상위 객체로, 웹 페이지 자체를 의미합니다.
+
+        [DOM 요소 선택하기]
+        - document.getElementById('id'): 특정 id를 가진 요소를 선택합니다. (가장 빠름)
+        - document.querySelector('selector'): CSS 선택자와 동일한 문법으로 요소를 하나 선택합니다. (첫 번째 요소만)
+        - document.querySelectorAll('selector'): CSS 선택자와 동일한 문법으로 해당하는 모든 요소를 NodeList(유사 배열)로 선택합니다.
+
+        [DOM 요소의 속성(Property) 및 내용(Content) 변경]
+        - 선택된 DOM 요소는 객체이므로, 그 속성(property)에 접근하여 값을 변경할 수 있습니다.
+        - 내용 변경
+          - `element.textContent`: 요소 안의 순수 텍스트만 변경/가져옵니다. (HTML 태그 무시, **권장**)
+          - `element.innerText`: 화면에 보이는 텍스트만 처리합니다. (숨겨진 요소 제외)
+          - `element.innerHTML`: 텍스트와 함께 HTML 태그도 해석하여 반영합니다. (보안 주의 필요)
+        - 스타일 변경: `element.style.속성명 = '값'` (예: `myDiv.style.color = 'blue'`)
+        - 속성(Attribute) 변경: `element.id = 'newId'`, `img.src = 'new.jpg'`, `a.href = '...'`
+        - 클래스 변경: `element.className = '...'`, `element.classList.add('...')`, `element.classList.remove('...')`
+    -->
+
+    <hr>
+    <h3>1. addEventListener 예제</h3>
+    <button id="myButton">눌러보세요!</button>
+    <p id="message"></p>
+
+    <hr>
+    <h3>2. event 객체와 키보드 이벤트 예제</h3>
+    <input type="text" id="myInput" placeholder="여기에 입력하세요">
+    <p id="key-message"></p>
+
+    <hr>
+    <h3>3. DOM 조작 예제 (내용, 속성, 스타일 변경)</h3>
+    <div id="dom-box" style="border: 2px solid black; padding: 10px; margin-top: 10px;">
+        이곳의 내용이 바뀝니다.
+    </div>
+    <button id="changeButton">내용 및 스타일 변경</button>
+
+    <script>
+        // 1. 버튼 클릭 이벤트 예제
+        // (1) 이벤트가 발생할 HTML 요소를 가져옵니다.
+        const myButton = document.getElementById('myButton');
+        const messageParagraph = document.getElementById('message');
+
+        let clickCount = 0;
+
+        // (2) 요소에 'click' 이벤트 리스너를 추가합니다.
+        // myButton을 클릭할 때마다 지정된 함수가 실행됩니다.
+        myButton.addEventListener('click', function() {
+            clickCount++;
+            messageParagraph.textContent = `버튼이 ${clickCount}번 클릭되었습니다!`;
+            console.log('버튼 클릭 이벤트 발생!');
+        });
+
+        // 2. 키보드 입력 이벤트 예제
+        const myInput = document.getElementById('myInput');
+        const keyMessage = document.getElementById('key-message');
+
+        // 'keyup' 이벤트는 키보드에서 키를 뗄 때 발생합니다.
+        // 이벤트 핸들러 함수는 'event' 객체를 첫 번째 인자로 받을 수 있습니다.
+        myInput.addEventListener('keyup', function(event) {
+            // event.target은 이벤트가 발생한 요소를 가리킵니다. (여기서는 myInput)
+            const inputValue = event.target.value;
+            // event.key는 눌린 키의 값을 알려줍니다.
+            const pressedKey = event.key;
+
+            keyMessage.textContent = `입력된 내용: ${inputValue} (마지막에 누른 키: ${pressedKey})`;
+        });
+
+        // 3. DOM 조작 이벤트 예제
+        const domBox = document.getElementById('dom-box');
+        const changeButton = document.querySelector('#changeButton'); // querySelector로 선택
+
+        changeButton.addEventListener('click', function() {
+            // 내용 변경 (innerHTML을 사용하여 HTML 태그 포함)
+            domBox.innerHTML = '<strong>DOM 조작 완료!</strong> 텍스트와 스타일이 변경되었습니다.';
+
+            // 스타일 변경
+            domBox.style.backgroundColor = '#e0f7fa';
+            domBox.style.color = '#00796b';
+            domBox.style.borderColor = '#00796b';
+
+            console.log('DOM 요소의 내용과 스타일이 변경되었습니다.');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        dataType : 변수나 상수에 할당할 수 있는 값의 종류
+    </h1>
+
+    <!--
+        숫자 : number => 정수, 실수 NaN(Not a number : 숫자가 아님)
+        문자 : string => '' "" `` 감싼 값들
+        불리언 : boolean => true / false
+        객체 :  object => 1개 이상의 데이터가 특정 구조를 가지는 형태
+        {키 : 값}{} : 아무것도 없는 객체도 1개의 객체로 취급
+     -->
+
+     <script>
+        let num = 123
+        let str = 'abc'
+        let bool = true
+        let obj = {name : 'hong' , age : 20}
+        let obj2 = new Object() //js에서 제공하는 내장객체
+        let arr = [1,'2',[1,2,3],{}]
+        let arr2 = new Array() //js에서 제공하는 내장객체
+        let undi = undefined
+        let nul = null
+
+        console.log(typeof num)
+        console.log(typeof str)
+        console.log(typeof bool)
+        console.log(typeof obj)
+        console.log(typeof obj2)
+        console.log(typeof arr)
+        console.log(typeof arr2)
+        console.log(typeof undi)
+        console.log(typeof nul)
+        console.log(obj)
+        console.log(arr)
+
+
+
+     </script>
+
+     <!--
+        기본 자료형 : 값이 메모리의 주소값을 가르키는 곳에 직접 할당이 되어있는 값
+        number, boolean, string(참조자료형이지만 편의상 기본자료형 처럼 사용)
+        
+        참조자료형 : 값이 저장되어 있는 주소를 저장
+        string, array, object, function, null, undefined
+
+        == (같다) !=(같지 않다) => 값만 비교
+        === !== => 값+타입 비교
+
+      -->
+
+      <script>
+        let num1 = 10
+        let num2 = '10'
+        console.log(num1 == num2)
+        console.log(num1 === num2)
+      </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>공지사항</title>
+  </head>
+  <body>
+    <h1>공지사항</h1>
+    <hr />
+    <form action="">
+      <div>
+        <strong>작성자</strong>
+        <input type="text" name="writer" placeholder="YYY" /><br />
+        <strong>제목</strong>
+        <input type="text" name="subject" placeholder="제목" />
+        <label
+          ><input type="checkbox" name="is_notice" value="true" />
+          <strong>공지</strong></label
+        ><br />
+        <strong>내용</strong><br />
+        <textarea name="content" id="" cols="30" rows="10"></textarea>
+      </div>
+    </form>
+
+    <hr />
+
+    <h2>파일첨부</h2>
+    <div>
+      <input type="text" disabled />
+      <input type="file" /><br />
+      <input type="text" disabled />
+      <input type="file" /><br />
+      <input type="text" disabled />
+      <input type="file" />
+    </div>
+
+    <!-- pre 태그는 입력한 그대로 출력 enter까지 포함-->
+    <div>
+      <p>
+        <small>
+          - 파일 확장자가 zip,pdf,hwp 등 파일만 업로드 가능(파일명은 특수문자 및
+          공백 사용금지) <br />
+          - 최대 업로드 시 첨부파일 1개 당 200MB까지 가능
+        </small>
+      </p>
+    </div>
+
+    <hr />
+
+    <div>
+      <input type="reset" value="취소" />
+      <input type="submit" value="저장" />
+    </div>
+  </body>
+</html>

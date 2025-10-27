@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>네이버 로그인인</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Square+Round:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            /*padding 10px border 1px*/
+            padding: 10px;
+            border: 1px solid black;
+        }
+
+        .box1 {
+            background-color: blueviolet;
+            box-sizing: border-box;
+        }
+
+        .box2{
+            background-color: springgreen;
+            box-sizing: content-box;
+        }
+
+        body {
+            font-family: 'Nanum Square Round', sans-serif; /* 기본 폰트 설정 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f6f7; /* 배경색을 약간 회색으로 */
+            margin: 0;
+        }
+
+        .login-container {
+        width: 400px;
+        padding: 20px;
+        border: 1px solid #e0e0e0;
+        background-color: #fff;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .login
+    </style>
+</head>
+<body>
+    <!--
+    box-sizing : box 크기를 지정하는 속성
+    width : 컨텐츠의 가로 길이 
+    box-sizing에 따라 width 크기가 컨텐츠의 가로길이 또는,
+    박스 전체의 가로길이가 될 수 있음
+        - border-box : width = 컨텐츠가로 + 패딩(왼+오)+태두리(왼+오)
+        - content-box : width = 컨텐츠가로
+     -->
+
+     <div class="box box1"></div>
+     <div class="box box2"></div>
+     <div class="login-container">
+        <p class ="login-text">네이버를 더 안전하고 편리하게 이용하세요</p>
+        <button class="login-btn">
+            <strong>NAVER</strong>
+        </button>
+     </div>
+     <div class="link-container">
+        <a href="#" class="find-creds">
+            <i class="fa-solid fa-lock"></i>아이디 비밀번호 찾기
+        </a>
+        <a href="#" class="signup">
+            <i class="fa-solid fa-user-plus"></i>회원가입
+        </a>
+     </div>
+</body>
+</html>

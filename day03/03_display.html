@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div{
+            width: 200px;
+            height: 50px;
+            background-color: antiquewhite;
+            margin: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        span , b {
+            width: 200px;
+            height: 50px;
+            background-color: aliceblue;
+            margin: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        button{
+            width: 200px;
+            height: 50px;
+            background-color: rgb(39, 32, 66);
+            margin: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <!--
+    display 속성
+    - 태그가 화면에 어떻게 보여질지 그 표시 유형(성격)을 결정하는 방식.
+
+    - block :
+      - 한 줄 전체를 차지하는 박스 형태로, 항상 새로운 줄에서 시작하는 방식.
+      - width, height, margin, padding 속성으로 크기와 여백 조절이 **모두 가능**한 방식.
+      - <div>, <p>, <h1>~<h6>, <ul>, <li>, <form> 태그 등이 이 방식을 따름.
+
+    - inline :
+      - 문장 안의 글자처럼 컨텐츠 크기만큼만 영역을 차지하고, 줄바꿈 없이 옆으로 배치되는 방식.
+      - width, height 속성 조절이 **불가능**한 방식. (margin은 좌/우만, padding은 적용되나 레이아웃에 영향을 주지 않을 수 있음.)
+      - <span>, <a>, <b>, <i>, <img> 태그 등이 이 방식을 따름.
+
+    - inline-block :
+      - inline처럼 줄바꿈 없이 옆으로 배치되면서, block처럼 크기 조절이 가능한 방식.
+      - width, height, margin, padding 속성으로 크기와 여백 조절이 **모두 가능**한 방식.
+      - <input>, <button>, <select> 태그 등이 이 방식을 따름.
+
+    - flex, grid (추가) :
+      - 자식 요소들을 정렬하고 배치하기 위한 현대적인 레이아웃 방식. (이 속성들은 부모 요소에 적용하는 방식.)
+     -->
+
+     <div>block 속성</div>
+     <span>inline 속성</span>
+     <b>inline 속성</b>
+     <button>inline-block 속성</button>
+</body>
+</html>

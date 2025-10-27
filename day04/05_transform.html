@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--
+    transform 속성 : 회전, 이동, 확대, 기울이기 등
+        - translate(x,y) : x축, y축을 만큼 이동
+        - translateX(x) / translateY(y)
+        - scale(w,h) : 가로로 w배 만큼, 세로로 h배 만큼 확대 => 값을 0으로 하면 사라짐
+        - scaleX(w) scaleY(h)
+        - rotate(a) : a각도만큼 시계 방향으로 회전, 단위는 deg 단위 사용
+        - skew(xa,ya) : x축으로 xa만큼, y축으로 ya만큼 기울이기
+
+        transition
+        - 다른 속성값이 변화할때 서서히 변화하도록 하는 효과
+        - 애니메이션 효과가 발생한 것처럼 보이게 함
+        - transition 속성명 전환시간;
+        - 속성이 전환시간동안 서서히 변화(안적으면 모든 효과)
+     -->
+     <style>
+        body {
+            /* 3D Transform 효과를 위한 원근감 부여 */
+            perspective: 800px;
+        }
+
+        @keyframes morph-and-fly {
+            0% {
+                transform: none;
+                background-color: skyblue;
+                border-radius: 0;
+            }
+            25% {
+                /* 위로 솟구치며 수직으로 얇아짐 */
+                transform: translateY(-150px) scaleX(0.2);
+                background-color: #a29bfe;
+            }
+            50% {
+                /* 3D 회전하며 오른쪽으로 이동하고 원으로 변함 */
+                transform: translateX(150px) rotateY(180deg);
+                background-color: #74b9ff;
+                border-radius: 50%;
+            }
+            75% {
+                /* 아래로 떨어지며 납작해졌다가 튀어오름 */
+                transform: translateX(150px) rotateY(180deg) translateY(50px) scaleY(0.5);
+                background-color: #fd79a8;
+            }
+            100% {
+                /* 최종 위치에 회전하며 안착 */
+                transform: translateX(150px) rotateY(360deg) scale(1.2);
+                background-color: steelblue;
+                border-radius: 0;
+            }
+        }
+
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+            margin: 100px;
+            /* 마우스를 떼었을 때 0.5초 동안 부드럽게 원래 상태로 복귀 */
+            transition: all 0.5s ease-out;
+        }
+
+        .box:hover{
+            /* 마우스를 올리면 2초 동안 'morph-and-fly' 애니메이션 실행 */
+            animation: morph-and-fly 2s forwards;
+        }
+
+        .font{
+            font-size: 30px;
+            font-weight: bold;
+            margin-left: 100px;
+            /* font-size와 color 속성이 0.5초 동안 부드럽게 변화하도록 설정 */
+            transition: font-size 0.5s, color 0.5s;
+        }
+
+        .font:hover{
+            /* 마우스를 올렸을 때 글자 크기와 색상 변경 */
+            font-size: 50px;
+            color: dodgerblue;
+        }
+     </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="font">transition</div>
+</body>
+</html>

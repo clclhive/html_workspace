@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      body {
+      }
+
+      fieldset {
+        border: none;
+        border-top: 2px solid black;
+        padding: 10px;
+      }
+
+      legend {
+        font-size: medium;
+        font-weight: bold;
+        padding: 0 10px;
+      }
+
+      h1 {
+      }
+
+      button {
+        padding: 5px 15px;
+        font-size: small;
+        cursor: pointer;
+      }
+
+      input[type="number"] {
+        padding: 5px;
+        width: 30px;
+        font-size: small;
+      }
+
+      #guguTable {
+        margin-top: 20px;
+        border-collapse: collapse;
+        width: auto;
+      }
+
+      #guguTable td {
+        border: 1px solid black;
+        padding: 8px 6px;
+        text-align: center;
+        white-space: nowrap;
+      }
+    </style>
+  </head>
+  <body>
+    <fieldset>
+      <legend>단 구구단</legend>
+      <h1>구구단 전체 출력</h1>
+      <input type="number" id="dan-input" min="2" max="9" placeholder="단">
+      <button onclick="printSingleDan()">단 출력</button></button>
+      <button onclick="printGugudan()">전체 출력</button>
+    </fieldset>
+
+    <div id="gugu"></div>
+
+    <script>
+      function printGugudan() {
+        const resultDiv = document.getElementById("gugu");
+
+        let tableH = '<table id="guguTable">';
+
+        for (let i = 1; i <= 9; i++) {
+          tableH += "<tr>";
+          for (let j = 2; j <= 9; j++) {
+            tableH += `<td>${j} * ${i} = ${i * j}</td>`;
+          }
+          tableH += "</tr>";
+        }
+        tableH += "</table>";
+
+        resultDiv.innerHTML = tableH;
+      }
+      function printSingleDan() {
+        const resultDiv = document.getElementById("gugu");
+        const danInput = document.getElementById("dan-input");
+
+        // 입력된 값을 정수형으로 변환
+        const dan = parseInt(danInput.value);
+
+        let tableH = '<table id="guguTable">';
+
+        // 해당 단의 1~9 곱셈을 세로(행)로 출력
+        for (let i = 1; i <= 9; i++) {
+          tableH += "<tr>";
+          tableH += `<td>${dan} * ${i} = ${dan * i}</td>`;
+          tableH += "</tr>";
+        }
+
+        tableH += "</table>";
+        resultDiv.innerHTML = tableH;
+      }
+    </script>
+  </body>
+</html>
