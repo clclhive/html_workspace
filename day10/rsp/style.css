@@ -1,0 +1,59 @@
+/* 전체 페이지 기본 스타일 (선택 사항) */
+body {
+    font-family: sans-serif;
+    text-align: center;
+    margin: 20px;
+}
+
+/* 1. 플레이어 선택 이미지 스타일 */
+#player-choices img {
+    width: 100px;  /* 이미지 크기 통일 */
+    height: 100px;
+    margin: 10px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    cursor: pointer; /* 마우스를 올리면 손가락 모양으로 변경 */
+    transition: transform 0.2s; /* 부드러운 효과 */
+}
+
+/* 마우스를 올렸을 때 살짝 커지는 효과 */
+#player-choices img:hover {
+    transform: scale(1.1);
+    border-color: #007bff;
+}
+
+/* 2. 결과 표시 영역 스타일 */
+#result-container {
+    margin-top: 30px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    /* 결과 영역이 처음부터 보이지 않도록 숨김 */
+    display: none; 
+}
+
+/* 3. 플레이어 vs 컴퓨터 선택 표시 영역 (Flexbox로 간단히 정렬) */
+#choices-display {
+    display: flex;
+    justify-content: space-around; /* 양쪽으로 벌리기 */
+    align-items: center;
+    margin-top: 20px;
+}
+
+.choice-box {
+    text-align: center;
+}
+
+/* 결과로 보여줄 이미지 스타일 */
+#choices-display img {
+    width: 80px;
+    height: 80px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+
+/* 4. 라운드 결과 (승/패/무) 텍스트 스타일 */
+#round-result {
+    font-size: 1.5em;
+    font-weight: bold;
+}

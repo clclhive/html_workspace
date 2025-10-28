@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    파일명 : <input type="text" id="fileName">
+    <button type="button" id="btn">확인</button>
+    <h3 id="result"></h3>
+
+    <script>
+        /*input 태그에 파일명.확장자 형태로 입력해 확인버튼 누르면
+        *이미지 파일인 지 아닌지 검사
+        *이미지 파일이면 '정상'(초록색)
+        *아니면 '비정상'(빨강)
+        */
+       const fileNameInput = document.getElementById('fileName');
+       const checkButton = document.getElementById('btn');
+       const resultH3 = document.getElementById('result');
+
+       checkButton.addEventListener('click', function() {
+            const fileName = fileNameInput.value;
+
+            // 실행 파일 확장자를 확인하는 정규표현식
+            const exeRegex = /\.exe$/i;
+            // 이미지 파일 확장자를 확인하는 정규표현식 (jpg, jpeg, png, gif - 대소문자 구분 없음)
+            const imageRegex = /\.(jpg|jpeg|png|gif)$/i;
+
+            if (exeRegex.test(fileName)) {
+                // 실행 파일인 경우
+                resultH3.textContent = '실행 파일은 허용되지 않습니다.';
+                resultH3.style.color = 'red';
+            } else if (imageRegex.test(fileName)) {
+                // 이미지 파일인 경우
+                resultH3.textContent = '정상';
+                resultH3.style.color = 'green';
+            } else {
+                // 이미지 파일이 아닌 경우
+                resultH3.textContent = '비정상';
+                resultH3.style.color = 'red';
+            }
+       });
+
+       // input 필드에서 Enter 키를 누르면 확인 버튼 클릭
+       fileNameInput.addEventListener('keydown', function(event) {
+            // 눌린 키가 'Enter'인지 확인
+            if (event.key === 'Enter') {
+                // 버튼의 click 이벤트를 강제로 발생시킴
+                checkButton.click();
+            }
+       });
+
+    </script>
+</body>
+</html>

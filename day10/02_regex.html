@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>정규표현식(Regular Expression) RegEx / RegExp</h1>
+    <!-- 
+        정규표현식 : 문자 내에서 특정 내용을 찾거나 대체, 발췌 시 사용
+        RegEx / RegExp 단어로 많이 사용
+        특정 데이터를 탐색, 확인, 존재여부를 쉽게 파악하기 위한 규칙
+        주로 데이터 분석과 같은 분야에서 사용(반드시 알아야함)
+        웹분야에서는 password, 첨부파일 규칙 등, 회원가입 규칙 등에서만 사용
+
+    -->
+
+    <h2>주요 문법 및 메서드</h2>
+    <pre>
+        <code>
+    <h3>1. 기본 형식</h3>
+    /pattern/flags
+    - /.../ : 정규식의 시작과 끝을 나타내는 구분자.
+    - pattern : 찾고자 하는 문자의 패턴.
+    - flags (옵션) : 검색 방식을 설정.
+        - i : 대소문자를 구분하지 않고 검색 (ignore case).
+        - g : 문자열 내의 모든 일치 항목을 찾음 (global search). 없으면 첫 번째 일치 항목만 찾음.
+        - m : 여러 줄 모드 (multi-line). ^와 $가 각 줄의 시작과 끝에 대응되도록 함.
+
+    <h3>2. 주요 메서드</h3>
+    - ('str').match(/regexp/) : 문자열 'str'에서 정규식 'regexp'와 일치하는 부분을 찾아 배열로 반환. 일치하는 부분이 없으면 null을 반환.
+    - (/regexp/).test('str') : 문자열 'str'이 정규식 'regexp'에 부합하는지 여부를 boolean(true/false)으로 반환. (존재 여부 확인에 유용)
+
+    <h3>3. 주요 패턴 문자</h3>
+    - . : 줄바꿈 문자를 제외한 모든 단일 문자와 일치. (e.g., /h.t/는 hot, hat, h t 등과 일치)
+    - | : OR 연산자. 여러 패턴 중 하나와 일치. (e.g., /cat|dog/는 'cat' 또는 'dog'와 일치)
+    - [] : 대괄호 안의 어떤 문자와도 일치. (e.g., /[abc]/는 'a', 'b', 'c' 중 하나와 일치)
+        - [a-z] : 모든 소문자 알파벳
+        - [A-Z] : 모든 대문자 알파벳
+        - [0-9] : 모든 숫자
+        - [가-힣] : 모든 한글
+    - [^...] : 대괄호 안의 문자를 제외한 모든 문자와 일치 (NOT).
+
+    <h3>4. 자주 사용하는 문자 클래스</h3>
+    - \d : 숫자(digit)와 일치. [0-9]와 동일.
+    - \D : 숫자가 아닌 문자와 일치. [^0-9]와 동일.
+    - \w : 알파벳, 숫자, 밑줄(_)과 일치. [a-zA-Z0-9_]와 동일.
+    - \W : 알파벳, 숫자, 밑줄(_)이 아닌 문자와 일치.
+    - \s : 공백 문자와 일치 (스페이스, 탭, 줄바꿈 등).
+    - \S : 공백이 아닌 문자와 일치.
+
+    <h3>5. 수량자 (Quantifiers)</h3>
+    - * : 앞의 문자가 0번 이상 반복.
+    - + : 앞의 문자가 1번 이상 반복.
+    - ? : 앞의 문자가 0번 또는 1번 등장.
+    - {n} : 앞의 문자가 정확히 n번 등장.
+    - {n,} : 앞의 문자가 n번 이상 등장.
+    - {n,m} : 앞의 문자가 n번 이상 m번 이하 등장.
+
+    <h3>6. 경계 (Anchors)</h3>
+    - ^ : 문자열의 시작 부분과 일치.
+    - $ : 문자열의 끝 부분과 일치.
+        </code>
+    </pre>
+
+    <script>
+        // 예시 파일 이름 배열
+        const fileNames = [
+            'document.pdf',
+            'photo.JPG',
+            'script.js',
+            'archive.zip',
+            'main_page.html',
+            'logo.png'
+        ];
+
+        console.log("--- 파일 목록 ---");
+        console.log(fileNames);
+        console.log("\n");
+
+        // 예시 1: jpg 파일이 있는지 확인 (대소문자 구분 없이)
+        // \. : '.' 문자를 의미 (그냥 .은 모든 문자를 의미하므로 이스케이프 처리)
+        // $ : 문자열의 끝
+        // i : 대소문자 구분 안함
+        const jpgRegex = /\.jpg$/i;
+        const hasJpg = fileNames.some(file => jpgRegex.test(file));
+        console.log("1. jpg 파일이 존재하나요?", hasJpg); // true ('photo.JPG' 때문에)
+
+        // 예시 2: 이미지 파일(jpg, png, gif)이 있는지 확인
+        const imageRegex = /\.(jpg|png|gif)$/i;
+        const hasImageFile = fileNames.some(file => imageRegex.test(file));
+        console.log("2. 이미지 파일(jpg, png, gif)이 존재하나요?", hasImageFile); // true ('photo.JPG', 'logo.png' 때문에)
+
+        // 예시 3: 자바스크립트(.js) 파일이 있는지 확인
+        const jsRegex = /\.js$/;
+        const hasJsFile = fileNames.some(file => jsRegex.test(file));
+        console.log("3. JavaScript(.js) 파일이 존재하나요?", hasJsFile); // true ('script.js' 때문에)
+
+        console.log("\n--- 유효성 검사(Validation) 예제 ---");
+
+        // [추가 예제 1] 아이디 유효성 검사
+        // - 4~12자의 영문 소문자, 숫자로만 구성되어야 함
+        // - ^ : 문자열 시작
+        // - [a-z0-9] : 소문자 또는 숫자
+        // - {4,12} : 4자 이상 12자 이하
+        // - $ : 문자열 끝
+        const idRegex = /^[a-z0-9]{4,12}$/;
+        const isValidId = (id) => idRegex.test(id);
+
+        console.log("\n[아이디 검사]");
+        console.log("my_id_123 :", isValidId("my_id_123")); // true
+        console.log("short :", isValidId("short"));         // true
+        console.log("longlonglongid :", isValidId("longlonglongid")); // false (13자)
+        console.log("UPPERCASE :", isValidId("UPPERCASE"));   // false (대문자 포함)
+        console.log("special!@# :", isValidId("special!@#")); // false (특수문자 포함)
+
+        // [추가 예제 2] 비밀번호 유효성 검사
+        // - 최소 8자 이상, 하나 이상의 영문자, 하나의 숫자, 하나의 특수문자를 포함해야 함
+        // - (?=.*[a-zA-Z]) : 영문자가 있는지 확인 (Lookahead)
+        // - (?=.*\d) : 숫자가 있는지 확인
+        // - (?=.*[!@#$%^&*]) : 지정된 특수문자가 있는지 확인
+        // - .{8,} : 모든 문자(.)가 8자 이상
+        const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/;
+        const isValidPassword = (pw) => passwordRegex.test(pw);
+
+        console.log("\n[비밀번호 검사]");
+        console.log("password123! :", isValidPassword("password123!")); // true
+        console.log("short1! :", isValidPassword("short1!"));         // false (8자 미만)
+        console.log("onlyletters :", isValidPassword("onlyletters"));   // false (숫자, 특수문자 없음)
+        console.log("12345678 :", isValidPassword("12345678"));       // false (문자, 특수문자 없음)
+
+        // [추가 예제 3] 이메일 유효성 검사
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        const isValidEmail = (email) => emailRegex.test(email);
+        console.log("\n[이메일 검사]");
+        console.log("test@example.com :", isValidEmail("test@example.com")); // true
+        console.log("invalid-email :", isValidEmail("invalid-email"));     // false (@와 . 없음)
+
+        console.log("\n--- 배열 메서드와 정규식 활용 예제 ---");
+
+        // [추가 예제 4] filter와 정규식을 사용하여 이미지 파일만 필터링하기
+        // fileNames 배열에서 이미지 확장자(jpg, png, gif)를 가진 파일만 골라냅니다.
+        const imageFiles = fileNames.filter(file => /\.(jpg|png|gif)$/i.test(file));
+        console.log("\n[filter로 이미지 파일만 추출]");
+        console.log("원본 배열:", fileNames);
+        console.log("이미지 파일만 필터링한 결과:", imageFiles); // ['photo.JPG', 'logo.png']
+
+        // [추가 예제 5] match와 reduce를 사용하여 문자열에서 숫자만 추출하여 합산하기
+        const textWithNumbers = "주문내역: 사과 5개, 바나나 3개, 총 금액 12000원";
+        
+        // \d+ : 하나 이상의 숫자에 일치하는 부분을 찾음
+        // g : 전역 검색 (문자열 전체에서 모든 일치 항목을 찾음)
+        const numberRegex = /\d+/g;
+
+        // 1. match()를 사용해 문자열에서 모든 숫자 부분을 찾아 배열로 만듭니다.
+        const foundNumbers = textWithNumbers.match(numberRegex); // 결과: ['5', '3', '12000']
+
+        // 2. reduce()를 사용해 배열의 모든 숫자(문자열)를 더합니다.
+        const totalSum = foundNumbers.reduce((sum, current) => sum + parseInt(current, 10), 0);
+        console.log("\n[match와 reduce로 텍스트 속 숫자 합산]");
+        console.log(`'${textWithNumbers}' 에서 찾은 숫자들의 총합:`, totalSum); // 결과: 12008
+    </script>
+</body>
+</html>
