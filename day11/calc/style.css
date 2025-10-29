@@ -1,59 +1,96 @@
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: aliceblue;
-
+/* 기본 스타일 및 전체 레이아웃 */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f2f5; /* 부드러운 회색 배경 */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* 계산기 컨테이너 */
 .calculator {
-    width: 320px;
-    border: 1px solid black;
-    border-radius: 10px;
-    background-color: #fff;
-    overflow: hidden;
+  width: 320px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* 내부 요소가 둥근 모서리를 벗어나지 않도록 함 */
 }
 
-.display{
-    background-color: rgb(147, 201, 123);
-    color: white;
-    font-size: small;
-    text-align: right;
-    padding: 20px;
-    height: 80px;
-    box-sizing: border-box;
-    overflow-x: auto;
-
+/* 숫자 디스플레이 영역 */
+.display {
+  background-color: #222;
+  color: #fff;
+  font-size: 2.8rem;
+  font-weight: 300;
+  text-align: right;
+  padding: 20px;
+  min-height: 40px;
+  box-sizing: border-box;
+  word-wrap: break-word; /* 긴 숫자가 잘리지 않고 줄바꿈되도록 */
 }
 
-.buttons{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    
+/* 버튼 전체를 감싸는 그리드 컨테이너 */
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px; /* 버튼 사이의 간격 */
+  background-color: #ccc; /* 그리드 간격 색상 */
 }
 
-.btn{
-    padding: 20px;
-    font-size: small;
-    border: 1px solid black;
+/* 모든 버튼의 공통 스타일 */
+.btn {
+  background-color: #f9f9f9;
+  border: none;
+  padding: 20px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-.btn-operator{
-    background-color: orange;
-    color: white;
+.btn:hover {
+  background-color: #ececec;
 }
 
-.btn-clear{
-    background-color: red;
-    grid-column: span 2;
+.btn:active {
+  background-color: #ddd;
 }
 
-.btn-equals{
-    background-color: green;
-    grid-row: span 2;
+/* 기능별 버튼 스타일 */
+
+/* 연산자 버튼 (/, *, -, +) */
+.btn-operator {
+  background-color: #f39c12; /* 주황색 */
+  color: white;
 }
 
-.btn-zero{
-    grid-column: span 2;
+.btn-operator:hover {
+  background-color: #e68a00;
+}
+
+.btn-operator:active {
+  background-color: #d37c00;
+}
+
+/* 초기화(C) 버튼 */
+.btn-clear {
+  background-color: #e74c3c; /* 빨간색 */
+  color: white;
+  grid-column: span 3; /* HTML 구조에 맞게 3칸 차지 */
+}
+
+.btn-clear:hover {
+  background-color: #c0392b;
+}
+
+/* 등호(=) 버튼 */
+.btn-equals {
+  background-color: #2ecc71; /* 녹색 */
+  color: white;
+}
+
+/* 0 버튼 */
+.btn-zero {
+  grid-column: span 2; /* HTML 구조에 맞게 2칸 차지 */
 }
