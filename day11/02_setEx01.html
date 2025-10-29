@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        set 생성해서, 1~10까지 랜덤 수 5개 채워서 출력(중복 x) 화면에 출력하기기
+    -->
+
+    <script>
+        const set = new Set();
+
+        while (set.size < 5) {
+            const randomNum = Math.floor(Math.random() * 10) + 1;
+            set.add(randomNum);
+        }
+
+        const p = document.createElement('p');
+
+        const resultString = [...set].join(', ');
+        p.textContent = resultString;
+
+        document.body.appendChild(p);
+
+        console.log(set);
+        console.log([...set]);
+
+    </script>
+</body>
+</html>

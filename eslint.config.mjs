@@ -4,20 +4,23 @@ import globals from "globals";
 import js from "@eslint/js";
 
 export default [
-  // 1. ESLint가 추천하는 기본 규칙(const 재할당 금지 등)을 적용합니다.
+  // 1. ESLint가 추천하는 기본 규칙 적용
   js.configs.recommended,
 
-  // 2. 이 프로젝트의 세부 설정을 합니다.
+  // 2. .js 파일에 대한 세부 설정
   {
     languageOptions: {
-      // 3. 코드가 실행될 환경을 알려줍니다. (가장 중요!)
+      // 3. 'document', 'window' 등 브라우저 전역 변수 인식
       globals: {
-        ...globals.browser, // <-- 'window', 'document' 같은 브라우저 전역 변수 인식
+        ...globals.browser,
       },
 
-      // 4. 최신 자바스크립트 문법(const, let 등)을 사용한다고 알려줍니다.
+      // 4. 최신 자바스크립트 문법 사용
       ecmaVersion: "latest",
-      sourceType: "module",
+      
+      // 5. <script src="...">로 파일을 불러왔으므로 'script' (기본값)
+      // (만약 .js 파일 안에서 import/export를 쓴다면 "module"로 변경)
+      sourceType: "script", 
     },
   },
 ];

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="06_lotto.css">
+</head>
+<body>
+    <h1>set을 이용한 로또 만들기</h1>
+
+    <button id="makeRand">랜덤번호 6자리 생성(출력)</button>
+    <h1 id="printNum">로또번호 출력</h1>
+
+    <hr> <button id="ranking">랭킹 표시</button>
+    <h2 id="winningNumbers">당첨 번호: </h2>
+    <h3 id="bonusNumber">보너스 번호: </h3>
+    <h2 id="resultOutput">결과: </h2>
+
+    <script>
+        // HTML 요소(Element) 선택 ---
+        const makeRandBtn = document.getElementById('makeRand');
+        const printNumH1 = document.getElementById('printNum');
+        const rankingBtn = document.getElementById('ranking');
+        const winningNumH2 = document.getElementById('winningNumbers');
+        const bonusNumH3 = document.getElementById('bonusNumber');
+        const resultOutputH2 = document.getElementById('resultOutput');
+
+        let myLottoNumbers = []; // 내 로또 번호를 저장할 배열 전역변수수
+        function generateNumbers(count) {
+            const numbers = new Set();
+            while (numbers.size < count) {
+                const randomNum = Math.floor(Math.random() * 45) + 1;
+                numbers.add(randomNum);
+            }
+            return numbers;
+        }
+        function getRank(matchCount, bonusMatch) {
+            if (matchCount === 6) {
+                return "1등 (6개 일치)";
+            } else if (matchCount === 5 && bonusMatch) {
+                return "2등 (5개 일치 + 보너스)";
+            } else if (matchCount === 5) {
+                return "3등 (5개 일치)";
+            } else if (matchCount === 4) {
+                return "4등 (4개 일치)";
+            } else if (matchCount === 3) {
+                return "5등 (3개 일치)";
+            } else {
+                return "꽝 (낙첨)";
+            }
+        }
+        makeRandBtn.addEventListener('click', () => {
+
+            const lottoSet = generateNumbers(6);
+            
+            myLottoNumbers = [...lottoSet].sort((a, b) => a - b);
+
+            printNumH1.textContent = "내 번호: " + myLottoNumbers.join(', ');
+
+            winningNumH2.textContent = "당첨 번호: (랭킹 표시를 눌러주세요)";
+            bonusNumH3.textContent = "보너스 번호: ";
+            resultOutputH2.textContent = "결과: ";
+        });
+        rankingBtn.addEventListener('click', () => {
+            // 4-1. 내 번호가 있는지 확인
+            if (myLottoNumbers.length === 0) {
+                alert("먼저 '랜덤번호 6자리 생성' 버튼을 눌러주세요!");
+                return;
+            }
+
+            const mainWinningSet = generateNumbers(6);
+
+            let bonusNumber = 0;
+            while (true) {
+                bonusNumber = Math.floor(Math.random() * 45) + 1;
+                if (!mainWinningSet.has(bonusNumber)) {
+                    break;
+                }
+            }
+            const matchCount = myLottoNumbers.filter(num => mainWinningSet.has(num)).length;
+            const bonusMatch = myLottoNumbers.includes(bonusNumber);
+
+            const resultText = getRank(matchCount, bonusMatch);
+
+            const mainWinningArray = [...mainWinningSet].sort((a, b) => a - b);
+            winningNumH2.textContent = "당첨 번호: " + mainWinningArray.join(', ');
+            bonusNumH3.textContent = "보너스 번호: " + bonusNumber;
+            resultOutputH2.textContent = "결과: " + resultText;
+        });
+
+    </script>
+</body>
+</html>

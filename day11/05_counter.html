@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      /* 2. 전체 레이아웃 요구사항 */
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      /* 3. 세부 요소별 스타일 요구사항 */
+      
+      /* 숫자 (h1#number) */
+      #number {
+        font-size: 8rem;
+        font-weight: bold;
+        color: #333333;
+        margin-top: 0;
+        margin-bottom: 20px;
+      }
+
+      /* 버튼 (공통 스타일) */
+      button {
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1rem;
+        margin: 0 5px; /* 두 버튼 사이에 10px 간격 */
+        transition: background-color 0.2s, transform 0.1s; /* 부드러운 효과를 위한 transition */
+      }
+
+      /* 개별 색상 */
+      #incre {
+        background-color: #3498db; /* 파란색 계열 */
+      }
+
+      #decre {
+        background-color: #e67e22; /* 주황색 계열 */
+      }
+
+      /* 상호작용 효과 */
+      button:hover {
+        filter: brightness(90%); /* 마우스를 올리면 살짝 어두워짐 */
+      }
+
+      button:active {
+        transform: scale(0.98); /* 클릭 시 살짝 작아지는 효과 */
+      }
+    </style>
+</head>
+<body>
+    <!-- 
+        button 2개 준비
+        + 숫자 -
+        
+        + : 숫자 증가(1씩)
+        - : 숫자 감소(1씩)(값이 0이면 더이상 감소 X)
+
+
+    -->
+
+    <h1 id="number">0</h1>
+    <button type="button" id="incre"> increase </button>
+    <button type="button" id="decre"> decrease </button>
+
+    <script>
+      const numberEl = document.getElementById("number");
+      const increBtn = document.getElementById("incre");
+      const decreBtn = document.getElementById("decre");
+
+      let count = 0;
+      let intervalId = null;
+
+      // 숫자를 증가시키는 함수
+      const increaseCount = () => {
+        count++;
+        numberEl.textContent = count;
+      };
+
+      // 숫자를 감소시키는 함수
+      const decreaseCount = () => {
+        if (count > 0) {
+          count--;
+          numberEl.textContent = count;
+        }
+      };
+
+      // 반복을 멈추는 함수
+      const stopCounter = () => {
+        clearInterval(intervalId);
+      };
+
+      // 증가 버튼 이벤트
+      increBtn.addEventListener("mousedown", () => {
+        increaseCount();
+        intervalId = setInterval(increaseCount, 100);
+      });
+
+      // 감소 버튼 이벤트
+      decreBtn.addEventListener("mousedown", () => {
+        decreaseCount();
+        intervalId = setInterval(decreaseCount, 100);
+      });
+
+      // 마우스 버튼을 떼거나 버튼 밖으로 나갔을 때 반복 중지
+      document.addEventListener("mouseup", stopCounter);
+      document.addEventListener("mouseleave", stopCounter);
+    </script>
+</body>
+</html>

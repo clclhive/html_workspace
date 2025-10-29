@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+        과목, 점수 input 2개 생성
+        추가 버튼 생성 => map 저장
+        출력 버튼 생성 => ul => li 형태로 출력 html : 89
+        결과 버튼 생성 => 합계, 평균, 합격여부(60점 이상이면 pass) => h3
+    -->
+
+    <fieldset>
+      <legend>과목 추가</legend>
+      과목 : <input type="text" id="subject" /> 점수 :
+      <input type="number" id="score" />
+      <button type="button" id="addBtn">추가</button>
+      <button type="button" id="printBtn">출력</button>
+      <button type="button" id="resultBtn">결과</button>
+    </fieldset>
+    <ul id="ul"></ul>
+    <h3 id="h3"></h3>
+
+    <script>
+      const scoreMap = new Map();
+
+      const subjectInput = document.getElementById("subject");
+      const scoreInput = document.getElementById("score");
+      const addBtn = document.getElementById("addBtn");
+      const printBtn = document.getElementById("printBtn");
+      const resultBtn = document.getElementById("resultBtn");
+      const ul = document.getElementById("ul");
+      const h3 = document.getElementById("h3");
+
+      addBtn.addEventListener("click", () => {
+        const subject = subjectInput.value;
+        const score = scoreInput.value;
+
+        if (!subject || !score) {
+          alert("과목과 점수를 모두 입력하시오");
+          return;
+        }
+
+        scoreMap.set(subject, parseInt(score));
+
+        subjectInput.value = "";
+        scoreInput.value = "";
+        subjectInput.focus();
+      });
+
+      printBtn.addEventListener("click", () => {
+        ul.innerHTML = "";
+
+        scoreMap.forEach((score, subject) => {
+          const li = document.createElement("li");
+          li.textContent = `${subject} : ${score}`;
+          ul.appendChild(li);
+        });
+      });
+
+      resultBtn.addEventListener("click", () => {
+        const count = scoreMap.size;
+        
+        if(count === 0){
+            h3.textContent = '과목을 추가하세요';
+            return;
+        }
+
+        let total = 0;
+        
+        for(const score of scoreMap.values()){
+            total += score;
+        
+        }
+
+        const average = (total / count).toFixed(2);
+        
+        const passStatus = (average >= 60) ? 'pass' : 'fail';
+
+        h3.textContent = `합계: ${total}점, 평균: ${average}점, 합격여부: ${passStatus}`; 
+
+      })
+
+        
+    </script>
+  </body>
+</html>

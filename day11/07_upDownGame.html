@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="07_upDownGame.js"></script>
+<body>
+    <!-- 
+        1~99까지 숫자 중 하나를 랜덤으로 선택해 맞추는 게임
+        컴퓨터가 랜덤으로 하나 지정(랜덤 숫자 생성 버튼 누를 시 / 다시시도 버튼 누르면 랜덤 숫자 바뀜)
+        (다시시도 버튼은 window reload 사용용)
+        user가 입력하는 input에 숫자를 넣고 제출 버튼을 누르면,
+        컴퓨터의 숫자보다 크면 down 작으면 up 같으면 정답처리
+        다시시도 오른쪽에 시도 횟수를 정하는 input과 선택 창 만들고, 
+        선택을 누르면 해당 게임에서
+        정한 시도 횟수를 넘어가면, 도전 실패!가 뜨는 기능도 구현
+    -->
+
+        <h1>up down game</h1>
+        <p>computer selected 1~99 number as random</p>
+        <hr>
+        <div>
+            select number of retries : <input type="number" id="attemptInput" value="10" min="1" max="100">
+            <button id="setAttemptsBtn">select</button>
+            <button id="retryBtn">New Game</button>
+        </div>
+
+        <hr>
+
+        <div>
+            insert number : <input type="number" id="guessInput" min="1" max="99">
+            <button id="submitBtn">submit</button>
+        </div>
+
+        <div>
+            <h2>result : <span id="resultDisplay"></span></h2>
+            <h3>attempts left : <span id="attemptsLeft"></span><h3>
+        </div>
+</body>
+</html>

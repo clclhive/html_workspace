@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;400;700&family=Oswald:wght@700&family=UnifrakturCook:wght@700&display=swap');
+
+body {
+    font-family: 'Fira Sans', sans-serif;
+    background-color: #f4f1ea;
+    color: #4a3c31;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+h1, h2, h3 {
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-family: 'UnifrakturCook', cursive; /* 고전적인 느낌을 위해 UnifrakturCook 적용 */
+    color: #8B4513; /* SaddleBrown */
+    font-size: 3.5rem; /* 더 크고 웅장하게 */
+    line-height: 1; /* 줄 간격 조정 */
+}
+
+h2 {
+    font-family: 'Oswald', sans-serif; /* 헤드라인에 적합한 Oswald 적용 */
+    color: #5a4a42;
+    font-size: 1.8rem;
+}
+
+h3 {
+    font-family: 'Oswald', sans-serif; /* 헤드라인에 적합한 Oswald 적용 */
+    color: #6b5b53;
+    font-size: 1.4rem;
+}
+
+button {
+    font-family: 'Oswald', sans-serif; /* 버튼에도 Oswald 적용 */
+    background-color: #D2B48C; /* Tan */
+    color: #fff;
+    border: 2px solid #8B4513; /* SaddleBrown */
+    border-radius: 8px;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 10px 5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+}
+
+button:hover {
+    background-color: #c1a37c;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+hr {
+    border: 0;
+    height: 2px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(139, 69, 19, 0.75), rgba(0, 0, 0, 0));
+    width: 80%;
+    margin: 40px auto;
+}
+
+#printNum, #winningNumbers, #bonusNumber, #resultOutput {
+    font-family: 'Fira Sans', sans-serif; /* 숫자 가독성을 위해 Fira Sans 폰트 명시적 지정 */
+    font-weight: 400;
+    background-color: #fffaf0; /* FloralWhite */
+    padding: 15px 25px;
+    border-radius: 5px;
+    border: 1px dashed #c8bca9;
+    min-height: 1.5em;
+    line-height: 1.5em;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
