@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON 간단 예제</title>
+</head>
+<body>
+    <h1>JSON: 자바스크립트 객체와 문자열 변환</h1>
+
+    <p>
+        이 예제는 자바스크립트 객체를 서버로 보내기 위해 문자열로 바꾸고, <br>
+        서버에서 받은 문자열을 다시 자바스크립트 객체로 바꾸는 과정을 보여줍니다.
+    </p>
+    <p>
+        <strong>F12를 눌러 개발자 도구의 콘솔을 확인하세요.</strong>
+    </p>
+
+    <hr>
+
+    <script>
+        // [과정 1] 클라이언트가 서버로 데이터를 보낼 때
+        // 보내고 싶은 데이터 (자바스크립트 객체)
+        const user = {
+            name: "홍길동",
+            age: 30
+        };
+        console.log("1. 보내기 전 원본 객체 (key: value 형태로 출력):");
+        for (const key in user) {
+            console.log(`   ${key}: ${user[key]}`);
+        }
+
+        // 객체를 JSON 형태의 '문자열'로 변환 (직렬화)
+        const jsonString = JSON.stringify(user);
+        console.log("\n2. 문자열로 변환된 결과 (이것을 서버로 전송):", jsonString);
+
+        console.log("\n------------------------------------\n");
+
+        // [과정 2] 서버에서 클라이언트로 데이터를 받았을 때
+        // 서버로부터 받은 데이터 (JSON 형태의 '문자열'이라고 가정)
+        const receivedJsonString = jsonString;
+        console.log("3. 서버에서 받은 문자열:", receivedJsonString);
+
+        // JSON 문자열을 다시 자바스크립트 '객체'로 변환 (역직렬화/파싱)
+        const userObject = JSON.parse(receivedJsonString);
+        console.log("\n4. 다시 객체로 변환된 결과 (key: value 형태로 출력):");
+        for (const key in userObject) {
+            console.log(`   ${key}: ${userObject[key]}`);
+        }
+
+        // 이제 객체이므로 점(.)을 찍어 속성에 접근할 수 있습니다.
+        console.log(`\n(객체 속성 접근) 변환된 객체의 이름: ${userObject.name}`);
+    </script>
+</body>
+</html>

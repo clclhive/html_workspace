@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Fetch 테스트</title>
+</head>
+<body>
+    <h1>10개 사진 데이터 가져오기</h1>
+    <p>F12 개발자 도구 콘솔을 확인하세요.</p>
+
+    <script>
+        // await를 script 태그 최상단에서 사용하기 위해
+        // 전체를 async 함수로 감싸고 바로 실행합니다. (IIFE)
+        (async () => {
+            
+            const url = 'https://jsonplaceholder.typicode.com/photos?_start=0&_limit=10';
+
+            try {
+                const response = await fetch(url);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP 오류! 상태: ${response.status}`);
+                }
+
+                const data = await response.json();
+                console.log(data); // 10개 데이터 배열 출력
+
+            } catch (error) {
+                console.error('데이터 가져오기 실패:', error);
+            }
+
+        })(); // <-- 함수를 만들자마자 바로 실행
+    </script>
+
+</body>
+</html>

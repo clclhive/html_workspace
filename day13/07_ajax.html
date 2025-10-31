@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX 설명</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; padding: 20px; }
+        h1, h2 { border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        code { background-color: #f0f0f0; padding: 2px 5px; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <h1>AJAX (Asynchronous JavaScript and XML)</h1>
+    <p>
+        AJAX는 웹 페이지 전체를 새로고침하지 않고도, 백그라운드에서 서버와 데이터를 교환하여 페이지의 일부만 동적으로 업데이트하는 기술입니다. <br>
+        이를 통해 사용자는 더 빠르고 부드러운 웹 경험을 할 수 있습니다.
+    </p>
+
+    <h2>동기(Synchronous) vs 비동기(Asynchronous)</h2>
+    <p>
+        <strong>동기 방식:</strong> 서버에 요청을 보내고 응답이 올 때까지 모든 작업이 멈춥니다. (예: 페이지 이동)<br>
+        <strong>비동기 방식:</strong> 서버에 요청을 보낸 후, 응답을 기다리지 않고 다른 작업을 계속 수행합니다. 응답이 오면 그때 처리합니다. (AJAX의 핵심)
+    </p>
+
+    <script type="module">
+        
+        import axios from 'https://cdn.jsdelivr.net/npm/axios/dist/axios.esm.js';
+      
+        try {
+          const resp = await axios('https://jsonplaceholder.typicode.com/todos/1');
+          console.log(resp); 
+        } catch (err) {
+          console.log(err);
+        }
+      </script>
+
+</body>
+</html>

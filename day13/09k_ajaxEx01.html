@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Axios 테스트</title>
+</head>
+<body>
+<script>
+import axios from 'axios';
+
+const url = 'https://jsonplaceholder.typicode.com/photos?_start=0&_limit=10';
+
+async function fetchPhotos() {
+  try {
+    const response = await axios.get(url);
+    
+    console.log("데이터 가져오기 성공!");
+    console.log(response.data);
+
+  } catch (error) {
+    console.error('데이터 가져오기 실패:', error.message);
+  }
+}
+fetchPhotos();
+    </script>
+
+</body>
+</html>
