@@ -1,4 +1,3 @@
-/* 기본 구조 설정 */
 body {
     font-family: sans-serif;
     padding: 20px;
@@ -18,14 +17,13 @@ h1 {
     text-align: center;
 }
 
-/* 입력 영역 가로 배치 */
 .input-area {
     display: flex;
     margin: 15px 0;
 }
 
 #guess-input {
-    flex: 1; /* 입력창이 남은 공간 차지 */
+    flex: 1;
     padding: 8px;
     font-size: 16px;
 }
@@ -35,13 +33,10 @@ h1 {
     cursor: pointer;
 }
 
-/* [규칙 1] 비활성화된 요소 스타일 */
 :disabled {
     cursor: not-allowed;
     opacity: 0.6;
 }
-
-/* 결과 영역 */
 #result-area {
     margin-top: 15px;
     padding: 10px;

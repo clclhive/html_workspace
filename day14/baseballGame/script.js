@@ -41,8 +41,6 @@ function handleGuess() {
     if (!gameStarted) return;
     
     const guessString = guessInput.value;
-
-    // [규칙 3] 3자리인가? (사용자님 코드 - 좋습니다!)
     if(guessString.length !==3){
         alert('Please enter a 3-digit number');
         return;
