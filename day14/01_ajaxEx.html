@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="01_ajaxEx01.css" />
+  </head>
+  <body>
+    <header id="header"></header>
+    <section id="section"></section>
+
+    <script>
+      const requestURL =
+        "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json";
+
+      fetch(requestURL)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          populateHeader(data);
+          populateMembers(data);
+        })
+        .catch((error) => {
+          console.error("Er", error);
+        });
+
+      function populateHeader(jsonData) {
+        const header = document.getElementById("header");
+
+        const h1 = document.createElement("h1");
+        h1.textContent = jsonData.squadName;
+        header.appendChild(h1);
+
+        const p = document.createElement("p");
+        p.textContent = `Home Town: ${jsonData.homeTown} // Formed: ${jsonData.formed}`;
+        header.appendChild(p);
+      }
+
+      function populateMembers(jsonData) {
+        const section = document.getElementById("section");
+
+        const members = jsonData["members"];
+
+        members.forEach((member) => {
+          const article = document.createElement("article");
+
+          const h2 = document.createElement("h2");
+          h2.textContent = member["name"];
+
+          const p1 = document.createElement("p");
+          p1.textContent = `Secret Identity: ${member["secretIdentity"]}`;
+
+          const p2 = document.createElement("p");
+          p2.textContent = `Age: ${member["age"]}`;
+
+          const p3 = document.createElement("p");
+          p3.textContent = 'Superpowers:';
+
+          const ul = document.createElement("ul");
+          const powers = member["powers"];
+          powers.forEach((power) => {
+            const li = document.createElement("li");
+            li.textContent = power;
+            ul.appendChild(li);
+          });
+
+          article.appendChild(h2);
+          article.appendChild(p1);
+          article.appendChild(p2);
+          article.appendChild(p3);
+          article.appendChild(ul);
+          section.appendChild(article);
+        });
+      }
+    </script>
+  </body>
+</html>

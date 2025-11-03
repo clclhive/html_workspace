@@ -1,0 +1,51 @@
+/* 기본 구조 설정 */
+body {
+    font-family: sans-serif;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.game-container {
+    max-width: 400px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+/* 입력 영역 가로 배치 */
+.input-area {
+    display: flex;
+    margin: 15px 0;
+}
+
+#guess-input {
+    flex: 1; /* 입력창이 남은 공간 차지 */
+    padding: 8px;
+    font-size: 16px;
+}
+
+#start-btn, #guess-btn {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+/* [규칙 1] 비활성화된 요소 스타일 */
+:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* 결과 영역 */
+#result-area {
+    margin-top: 15px;
+    padding: 10px;
+    background: #eee;
+    border-radius: 4px;
+    min-height: 50px;
+}
