@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setInterval & clearInterval 예제</title>
+    <style>
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            padding: 20px;
+            text-align: center;
+        }
+        #clock {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 20px 0;
+            padding: 20px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            background-color: #f0f0f0;
+            display: inline-block;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        p {
+            max-width: 600px;
+            margin: 15px auto;
+            text-align: left;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        code {
+            background-color: #e0e0e0;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <h1>setInterval & clearInterval 예제 (디지털 시계)</h1>
+    <p>
+        <code>setInterval(callback, delay)</code>: 지정된 시간(밀리초)마다 콜백 함수를 <strong>반복적으로</strong> 실행합니다. <br>
+        실행 예약 후, 해당 타이머를 식별할 수 있는 '인터벌 ID'를 반환합니다.
+    </p>
+    <p>
+        <code>clearInterval(intervalId)</code>: <code>setInterval</code>로 설정된 반복 타이머를 취소합니다.
+    </p>
+
+    <div id="clock">00:00:00</div>
+    <div>
+        <button id="start-btn">시계 시작</button>
+        <button id="stop-btn">시계 정지</button>
+    </div>
+
+    <script>
+        const clock = document.getElementById('clock');
+        const startBtn = document.getElementById('start-btn');
+        const stopBtn = document.getElementById('stop-btn');
+
+        let intervalId = null; // 인터벌 ID를 저장할 변수
+
+        // 시간을 업데이트하는 함수
+        function updateClock() {
+            const now = new Date();
+            // getHours(), getMinutes(), getSeconds()는 숫자를 반환합니다.
+            // '0'을 앞에 붙이고 뒤에서 2글자만 잘라내어 항상 두 자리(e.g., 09, 15)를 유지합니다.
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            clock.textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        startBtn.addEventListener('click', () => {
+            // 이미 인터벌이 실행 중이면 중복 실행을 방지합니다.
+            if (intervalId !== null) {
+                console.log('이미 시계가 동작 중입니다.');
+                return;
+            }
+            // 1초(1000ms)마다 updateClock 함수를 반복 실행하고, 반환된 ID를 저장합니다.
+            intervalId = setInterval(updateClock, 1000);
+            console.log('시계 시작! 인터벌 ID:', intervalId);
+        });
+
+        stopBtn.addEventListener('click', () => {
+            if (intervalId === null) {
+                console.log('시작된 시계가 없습니다.');
+                return;
+            }
+            // 저장된 ID로 반복 실행을 취소합니다.
+            clearInterval(intervalId);
+            console.log('시계 정지! 인터벌 ID:', intervalId, '취소됨');
+            intervalId = null; // ID 변수 초기화
+        });
+
+        // 페이지가 로드되자마자 시간을 한 번 표시해줍니다.
+        updateClock();
+    </script>
+</body>
+</html>

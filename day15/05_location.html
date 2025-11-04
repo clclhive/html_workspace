@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>    
+    <h1>`window.location` 객체 예제</h1>
+    <p>
+        <code>window.location</code> 객체는 현재 페이지의 URL 정보를 담고 있으며, 
+        페이지를 새로고침하거나 다른 URL로 이동하는 등의 브라우저 탐색 기능을 제어할 수 있게 해줍니다.
+    </p>
+
+    <hr>
+
+    <h2>1. `location.href` (페이지 이동 - 기록 남김)</h2>
+    <p>
+        <code>location.href = "URL"</code> 또는 단순히 <code>location = "URL"</code>은 
+        지정된 URL로 페이지를 이동시킵니다. 
+        이전 페이지는 브라우저의 방문 기록에 남아 '뒤로 가기' 버튼으로 돌아갈 수 있습니다.
+    </p>
+    <button id="moveHrefBtn">Google로 이동 (href)</button>
+
+    <hr>
+
+    <h2>2. `location.assign()` (페이지 이동 - 기록 남김)</h2>
+    <p>
+        <code>location.assign("URL")</code>은 <code>location.href</code>와 동일하게 
+        지정된 URL로 페이지를 이동시키고, 이전 페이지를 방문 기록에 남깁니다. 
+        기능적으로는 <code>location.href</code>와 거의 같습니다.
+    </p>
+    <button id="moveAssignBtn">Naver로 이동 (assign)</button>
+
+    <hr>
+
+    <h2>3. `location.replace()` (페이지 이동 - 기록 대체)</h2>
+    <p>
+        <code>location.replace("URL")</code>은 지정된 URL로 페이지를 이동시키지만, 
+        현재 페이지를 브라우저의 방문 기록에서 <strong>새로운 페이지로 대체</strong>합니다. 
+        따라서 '뒤로 가기' 버튼을 눌러도 이전 페이지로 돌아갈 수 없습니다. 
+        (로그인 후 리다이렉트 등에 유용)
+    </p>
+    <button id="moveReplaceBtn">Daum으로 이동 (replace)</button>
+
+    <hr>
+
+    <h2>4. `location.reload()` (페이지 새로고침)</h2>
+    <p>
+        <code>location.reload()</code>는 현재 페이지를 새로고침합니다. 
+        인자로 <code>true</code>를 전달하면 서버로부터 페이지를 강제로 다시 로드하고, 
+        생략하거나 <code>false</code>를 전달하면 브라우저 캐시를 활용할 수 있습니다.
+    </p>
+    <button id="reloadBtn">현재 페이지 새로고침</button>
+
+    <script>
+        document.getElementById('moveHrefBtn').addEventListener('click', () => {
+            location.href = 'https://www.google.com';
+        });
+        document.getElementById('moveAssignBtn').addEventListener('click', () => {
+            location.assign('https://www.naver.com');
+        });
+        document.getElementById('moveReplaceBtn').addEventListener('click', () => {
+            location.replace('https://www.daum.net');
+        });
+        document.getElementById('reloadBtn').addEventListener('click', () => {
+            location.reload(); // 또는 location.reload(true)
+        });
+    </script>
+</body>
+</html>

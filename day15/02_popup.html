@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>팝업(Popup) 예제</title>
+    <style>
+        /* --- 기본 스타일 --- */
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            margin: 20px;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* --- 팝업 스타일 --- */
+        /* 팝업 전체를 감싸는 컨테이너 (어두운 배경) */
+        .popup-container {
+            display: none; /* 평소에는 숨겨둠 */
+            position: fixed; /* 화면에 고정 */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* 반투명 검은색 배경 */
+            z-index: 1000; /* 다른 요소들보다 위에 오도록 설정 */
+
+            /* 팝업 내용을 중앙에 위치시키기 위한 Flexbox 설정 */
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 팝업 내용이 들어갈 흰색 박스 */
+        .popup-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 400px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .popup-content h2 {
+            margin-top: 0;
+        }
+
+        /* 팝업 하단 (오늘 하루 보지 않기, 닫기 버튼) */
+        .popup-footer {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between; /* 양쪽 끝으로 정렬 */
+            align-items: center;
+        }
+
+        .popup-footer label {
+            font-size: 14px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>팝업(Popup) 예제</h1>
+    <p>팝업은 현재 페이지 위에 새로운 레이어를 띄워 공지사항, 광고, 이벤트 등 특정 정보를 사용자에게 보여주는 기능입니다.</p>
+    <button id="open-popup-btn">팝업 열기</button>
+
+    <!-- 팝업 HTML 구조 -->
+    <div id="popup" class="popup-container">
+        <div class="popup-content">
+            <h2>🎉 특별 이벤트 공지!</h2>
+            <p>지금 가입하시면 모든 상품 20% 할인 쿠폰을 드립니다!</p>
+            <div class="popup-footer">
+                <label>
+                    <input type="checkbox" id="dont-show-today"> 오늘 하루 보지 않기
+                </label>
+                <button id="close-popup-btn">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 1. 필요한 HTML 요소들을 가져옵니다.
+        const popup = document.getElementById('popup');
+        const openBtn = document.getElementById('open-popup-btn');
+        const closeBtn = document.getElementById('close-popup-btn');
+        const dontShowTodayCheckbox = document.getElementById('dont-show-today');
+
+        // 2. '팝업 열기' 버튼 클릭 시 팝업을 보여줍니다.
+        openBtn.addEventListener('click', function() {
+            // flex로 설정해야 자식 요소(popup-content)의 중앙 정렬이 적용됩니다.
+            popup.style.display = 'flex'; 
+        });
+
+        // 3. '닫기' 버튼 클릭 시 팝업을 닫습니다.
+        closeBtn.addEventListener('click', function() {
+            // '오늘 하루 보지 않기'가 체크되었는지 확인합니다.
+            if (dontShowTodayCheckbox.checked) {
+                // 쿠키를 생성하여 하루 동안 팝업이 보이지 않게 설정합니다.
+                const date = new Date();
+                date.setTime(date.getTime() + (24 * 60 * 60 * 1000)); // 현재 시간 + 24시간
+                const expires = "expires=" + date.toUTCString();
+                document.cookie = "popupDontShow=true; " + expires + "; path=/";
+            }
+            popup.style.display = 'none'; // 팝업을 숨깁니다.
+        });
+
+        // 4. 페이지가 로드될 때 쿠키를 확인하여 팝업을 띄울지 결정합니다.
+        // "popupDontShow=true" 라는 쿠키가 없으면 팝업을 띄웁니다.
+        if (document.cookie.indexOf("popupDontShow=true") === -1) {
+            popup.style.display = 'flex';
+        }
+    </script>
+</body>
+</html>

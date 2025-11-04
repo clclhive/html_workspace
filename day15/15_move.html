@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <style>
+        body{
+            height: 100vh;
+            background-color: #f0f0f0;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        #follower{
+            position: fixed;
+            font-size: 2rem;
+            color: #0d6efd;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            transition: all 0.1s ease-out;
+        }
+    </style>
+</head>
+<body>
+
+    <i id="follower" class="bi bi-apple"></i>
+
+    <script>
+        // 이제 이 코드는 정상적으로 <i id="follower">를 찾아냅니다.
+        const follower = document.getElementById('follower');
+
+        window.addEventListener('mousemove', (e) => {
+            follower.style.left = e.clientX + 'px';
+            follower.style.top = e.clientY + 'px';
+        });
+    </script>
+    
+</body>
+</html>

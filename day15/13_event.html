@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>document 영역에서 사용되는 이벤트 정의</h1>
+
+    <!-- 
+        마우스 이벤트 : click, dblclick, mouseover, mouseout, mousemove, mouseenter, mouseleave
+        키보드 이벤트 : keydown, keyup, keypress
+
+    -->
+
+    <div>
+        <img src="../img/logo.png" alt="random image" id="pic">
+    </div>
+
+    <script>
+        // 이미지에 마우스를 올리면 그림을 변경
+        // 마우스가 이미지를 벗어나면 기존 그림으로 다시 변경
+        const pic = document.getElementById('pic');
+        pic.addEventListener('mouseover', function() {
+            pic.src = 'https://picsum.photos/800/400?random=1';
+        });
+        pic.addEventListener('mouseout', function() {
+            pic.src = 'https://picsum.photos/800/400?random=0';
+        });
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        BOM : Browser Object Model
+    </h1>
+    <ul>
+        <li>
+            <h3>BOM 이란?</h3>
+            <p>
+                브라우저의 창이나 프레임을 프로그래밍적으로 제어할 수 있게 해주는 객체 모델입니다. <br>
+                웹 페이지의 내용(content)과는 독립적으로 브라우저의 기능(새 창 띄우기, 주소 이동, 화면 크기 조절 등)을 제어합니다.
+            </p>
+        </li>
+        <li>
+            <h3>BOM의 주요 객체</h3>
+            <p><code>window</code>: BOM의 최상위 객체로, 브라우저의 창을 나타냅니다. 전역 변수와 함수를 포함합니다. (e.g., <code>alert()</code>, <code>setTimeout()</code>)</p>
+            <p><code>navigator</code>: 브라우저의 이름, 버전, 언어, 위치 정보 등을 제공합니다.</p>
+            <p><code>screen</code>: 사용자의 디스플레이 화면 정보(해상도, 색상 깊이 등)를 제공합니다.</p>
+            <p><code>location</code>: 현재 페이지의 URL 정보를 담고 있으며, 다른 페이지로 이동시킬 수 있습니다. (e.g., <code>location.href = '...'</code>)</p>
+            <p><code>history</code>: 브라우저의 방문 기록을 제어합니다. (e.g., <code>history.back()</code>, <code>history.forward()</code>)</p>
+        </li>
+        <li>
+            <h3>사용 시 알아야 할 점</h3>
+            <p>BOM은 W3C 같은 표준화 기구에서 정의한 공식 표준이 아닙니다. 그래서 브라우저 제조사마다 일부 동작이 다를 수 있었지만, 최근에는 대부분의 기능이 통일되었습니다.</p>
+        </li>
+        <li>
+            <h3>BOM 예시</h3>
+            <button onclick="openNewWindow()">새 창 열기 (window.open)</button>
+            <button onclick="showNavigatorInfo()">브라우저 정보 보기 (navigator)</button>
+            <p id="navigator-info"></p>
+        </li>
+    </ul>
+
+    <h1>
+        DOM : Document Object Model
+    </h1>
+    <ul>
+        <li>
+            <h3>DOM 이란?</h3>
+            <p>
+                HTML, XML 문서를 위한 프로그래밍 인터페이스입니다. <br>
+                문서를 트리 구조의 노드(Node)와 객체(Object)로 표현하여, JavaScript와 같은 스크립트 언어가 문서의 구조, 스타일, 내용 등을 동적으로 변경할 수 있게 해줍니다.
+            </p>
+        </li>
+        <li>
+            <h3>DOM의 주요 특징</h3>
+            <p><code>document</code>: DOM 트리의 최상위 진입점(root) 객체입니다. HTML 문서 전체를 나타냅니다.</p>
+            <p>문서의 모든 요소(element), 속성(attribute), 텍스트를 각각의 객체로 다룰 수 있습니다.</p>
+            <p>DOM API를 통해 HTML 요소를 선택(<code>querySelector</code>), 생성(<code>createElement</code>), 수정(<code>innerHTML</code>), 삭제(<code>remove</code>)할 수 있습니다.</p>
+        </li>
+        <li>
+            <h3>사용 시 알아야 할 점</h3>
+            <p>DOM은 W3C 표준이므로 모든 브라우저에서 동일하게 동작합니다.</p>
+            <p>DOM을 직접 조작하여 화면을 변경하는 것은 렌더링 과정(리플로우, 리페인트)을 다시 유발하므로, 잦은 변경은 성능 저하의 원인이 될 수 있습니다.</p>
+        </li>
+        <li>
+            <h3>DOM 예시</h3>
+            <div id="dom-container" style="border: 1px solid #ccc; padding: 10px; margin-top: 10px;">
+                이곳의 컨텐츠가 바뀝니다.
+            </div>
+            <br>
+            <button id="change-text-btn">텍스트 및 스타일 변경</button>
+            <button id="add-element-btn">새로운 p 태그 추가</button>
+        </li>
+    </ul>
+
+    <script>
+        // --- BOM 예시 스크립트 ---
+        function openNewWindow() {
+            // window.open() : 새 브라우저 창을 엽니다.
+            window.open("https://www.google.com", "_blank", "width=600,height=400");
+        }
+
+        function showNavigatorInfo() {
+            // navigator 객체를 사용해 브라우저 정보를 가져옵니다.
+            const navigatorInfo = document.getElementById('navigator-info');
+            navigatorInfo.textContent = `현재 브라우저 정보: ${navigator.userAgent}`;
+        }
+
+        // --- DOM 예시 스크립트 ---
+        // 1. HTML 요소를 선택합니다.
+        const domContainer = document.getElementById('dom-container');
+        const changeBtn = document.getElementById('change-text-btn');
+        const addBtn = document.getElementById('add-element-btn');
+
+        // 2. '텍스트 및 스타일 변경' 버튼에 클릭 이벤트를 추가합니다.
+        changeBtn.addEventListener('click', function() {
+            domContainer.textContent = 'DOM 조작으로 텍스트가 변경되었습니다!';
+            domContainer.style.color = 'blue';
+            domContainer.style.fontWeight = 'bold';
+        });
+
+        // 3. '새로운 p 태그 추가' 버튼에 클릭 이벤트를 추가합니다.
+        addBtn.addEventListener('click', function() {
+            const newParagraph = document.createElement('p'); // 새로운 <p> 요소를 생성합니다.
+            newParagraph.textContent = '새롭게 추가된 문단입니다.'; // 새 요소에 텍스트를 추가합니다.
+            domContainer.appendChild(newParagraph); // 컨테이너 내부에 새 요소를 추가합니다.
+        });
+    </script>
+</body>
+</html>
